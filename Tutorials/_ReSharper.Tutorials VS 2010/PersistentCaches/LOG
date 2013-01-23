@@ -1,1 +1,5 @@
-2013/01/23-02:40:45.558 2660 Delete type=3 #1
+2013/01/23-03:25:01.433 24fc Recovering log #3
+2013/01/23-03:25:01.434 24fc Level-0 table #5: started
+2013/01/23-03:25:01.476 24fc Level-0 table #5: 32209 bytes OK
+2013/01/23-03:25:01.525 24fc Delete type=0 #3
+2013/01/23-03:25:01.525 24fc Delete type=3 #2

@@ -1,4 +1,4 @@
-﻿Build started 1/23/2013 3:14:40 AM.
+﻿Build started 1/23/2013 3:40:10 AM.
      1>Project "V:\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Tutorials.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -28,4 +28,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.34
+Time Elapsed 00:00:02.35

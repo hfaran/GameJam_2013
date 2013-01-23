@@ -40,16 +40,19 @@ Image bg; // image object
 Player chip;
 Rect ground, platform[3];
 
+//---------------------Engine-Functions--------------------------------//
+
 void InitPre()
 {
-	App.name("Image");
+	App.name("Game_001");
 	Paks.add("_Assets/engine.pak");
 	D.mode(1366,768);
 }
 
 Bool Init()
 {
-	bg.load("_Assets/ChipGame/lololol.gfx"); // load image from file
+	bg.load("_Assets/ChipGame/lololol.gfx"); // load bg
+
 	{ //Load frames for chip
 	chip.frame[0].load("_Assets/ChipGame/frame1.gfx");
 	chip.frame[1].load("_Assets/ChipGame/frame2.gfx");
@@ -91,6 +94,8 @@ void Draw()
 
 	drawPlayer( chip );
 }
+
+//---------------Non-engine Functions-----------------------------//
 
 bool collision(Rect A, Rect B)
 {
