@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DX10+|Win32">
+      <Configuration>Debug DX10+</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug DX10+|x64">
+      <Configuration>Debug DX10+</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DX10+|Win32">
+      <Configuration>Release DX10+</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DX10+|x64">
+      <Configuration>Release DX10+</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D5E88CFD-53A1-4136-9D8C-2958A7F05334}</ProjectGuid>
+    <RootNamespace>Tutorials</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DX10+|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DX10+|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DX10+|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DX10+|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|Win32'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|x64'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release DX10+|Win32'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release DX10+|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release DX10+|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release DX10+|x64'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release DX10+|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release DX10+|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions> /J</AdditionalOptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>EsenthelEngine.lib;winmm.lib;wininet.lib;ws2_32.lib;imm32.lib;psapi.lib;rpcrt4.lib;version.lib;libcmt.lib;libcpmt.lib;oldnames.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(ProjectName).exe</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions> /J</AdditionalOptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>EsenthelEngine64.lib;winmm.lib;wininet.lib;ws2_32.lib;imm32.lib;psapi.lib;rpcrt4.lib;version.lib;libcmt.lib;libcpmt.lib;oldnames.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(ProjectName).exe</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions> /J</AdditionalOptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>EsenthelEngine.lib;winmm.lib;wininet.lib;ws2_32.lib;imm32.lib;psapi.lib;rpcrt4.lib;version.lib;libcmt.lib;libcpmt.lib;oldnames.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(ProjectName).exe</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <TargetMachine>MachineX86</TargetMachine>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions> /J</AdditionalOptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>EsenthelEngine64.lib;winmm.lib;wininet.lib;ws2_32.lib;imm32.lib;psapi.lib;rpcrt4.lib;version.lib;libcmt.lib;libcpmt.lib;oldnames.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(ProjectName).exe</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <TargetMachine>MachineX64</TargetMachine>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions> /J</AdditionalOptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>EsenthelEngineDX10+.lib;winmm.lib;wininet.lib;ws2_32.lib;imm32.lib;psapi.lib;rpcrt4.lib;version.lib;libcmt.lib;libcpmt.lib;oldnames.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(ProjectName).exe</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions> /J</AdditionalOptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>EsenthelEngine64DX10+.lib;winmm.lib;wininet.lib;ws2_32.lib;imm32.lib;psapi.lib;rpcrt4.lib;version.lib;libcmt.lib;libcpmt.lib;oldnames.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(ProjectName).exe</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DX10+|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions> /J</AdditionalOptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>EsenthelEngineDX10+.lib;winmm.lib;wininet.lib;ws2_32.lib;imm32.lib;psapi.lib;rpcrt4.lib;version.lib;libcmt.lib;libcpmt.lib;oldnames.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(ProjectName).exe</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <TargetMachine>MachineX86</TargetMachine>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DX10+|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions> /J</AdditionalOptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>EsenthelEngine64DX10+.lib;winmm.lib;wininet.lib;ws2_32.lib;imm32.lib;psapi.lib;rpcrt4.lib;version.lib;libcmt.lib;libcpmt.lib;oldnames.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(ProjectName).exe</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <TargetMachine>MachineX64</TargetMachine>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\03 - Image.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DX10+|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DX10+|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DX10+|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Installation\EsenthelEngine\Animation\Animation Keys.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\Blocks.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\DataPath Select.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\Editor.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\Heightmap.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\EsenthelEngine.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\File\Chunk.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\File\File Text.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\File\File Xml.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\File\File.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\File\IO.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\File\Pak.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\File\Version Control.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Area.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Mini Map.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Object Params.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Object.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Animatable.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Character.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Destructible.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Door.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Item.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Kinematic.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Obj Light Cone.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Obj Light Point.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Obj Particles.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Objects\Static.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\Waypoint.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Game\World.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Font.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Gui Object.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Gui Style.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Gui.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Button.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\CheckBox.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Color Picker.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\ComboBox.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Context Menu.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Desktop.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Gui Custom.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Gui Image.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\List.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Menu.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Progress.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Property.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Region.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\SlideBar.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Slider.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Tabs.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Text.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\TextBox.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\TextLine.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Viewport.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Window IO.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Objects\Window.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Gui\Text Draw Settings.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Input\Input Buttons.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Input\Input.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Input\Joypad.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Input\Keyboard.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Input\Mouse.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Input\Touch.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Calculate.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Camera.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Frustum.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Math.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Matrix.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Number.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Orientation.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Quaternion.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Random.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shape.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Ball.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Box.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Capsule.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Circle.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Cone.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Edge.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Plane.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Polygon.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Pyramid.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Quad.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Rectangle.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Torus.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Triangle.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Shapes\Tube.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Math\Vector.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Cache.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Grid.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Map.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Mem Block.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Mem Continuous.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Mem Extended.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Mem List.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Mem Simple.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Memory.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Memory\Node.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Group.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Import.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Render.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Application.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Character.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Compress.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Config.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Cpu.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Date Time.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Enum.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Member.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Misc.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Param.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Pathfind 2D.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Pathfind.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Reference.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Sort.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\States.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\String Functions.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\String.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\String8.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Theora.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Thread.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Timer.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\UID.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Misc\Windows.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Interpolator.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Patcher.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Sql.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\KController.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\_\defines.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\_\headers.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\_\structs.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\_\types.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\_\warnings.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Base.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Csg.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Cuts.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Lod.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Mesh.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Overlay.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Mesh\Mesh Part.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Actor.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Cloth.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Controller.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Destruct Mesh.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Grab.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Joint.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Phys Body.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Physics.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Ragdoll.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Soft Body.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Physics\Wheel.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Sound\App Volume.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Sound\Music.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Sound\Sound.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Clouds.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Color.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Display Draw.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Display State.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Display.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Effects 2D.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Effects 3D.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Fog.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Image.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Light.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Material.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Particle.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Renderer.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Shader.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Sky.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Sun.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Vertex Index Buffer.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Graphics\Water.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Connection.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Download.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Ftp.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Net Object.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Net World.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Net\Socket.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Animation\Animation.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Animation\Motion.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Animation\Skeleton.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\Edit Mode.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\Environment Options.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\World\WE Area.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\World\WE Brush.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\World\WE Object.h" />
+    <ClInclude Include="..\Installation\EsenthelEngine\Edit\World\WE.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
