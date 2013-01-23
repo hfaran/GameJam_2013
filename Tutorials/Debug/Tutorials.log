@@ -1,17 +1,17 @@
-﻿Build started 01/22/2013 11:42:19 PM.
-     1>Project "C:\Users\THINK7\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.vcxproj" on node 2 (build target(s)).
+﻿Build started 1/23/2013 3:14:40 AM.
+     1>Project "V:\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Tutorials.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Users\THINK7\Documents\GitHub\GameJam_2013\Tutorials\ /ZI /nologo /W3 /WX- /Od /Oi /Ot /Oy /GT /D DEBUG /GF /Gm /EHsc /MT /GS /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /GR /Yu"StdAfx.h" /Fp"Debug\Tutorials.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "Source\03 - Image.cpp"  /J
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IV:\Documents\GitHub\GameJam_2013\Tutorials\ /ZI /nologo /W3 /WX- /Od /Oi /Ot /Oy /GT /D DEBUG /GF /Gm /EHsc /MT /GS /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /GR /Yu"StdAfx.h" /Fp"Debug\Tutorials.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "Source\03 - Image.cpp"  /J
          03 - Image.cpp
        ResourceCompile:
          All outputs are up-to-date.
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Tutorials.exe" /INCREMENTAL /NOLOGO EsenthelEngine.lib winmm.lib wininet.lib ws2_32.lib imm32.lib psapi.lib rpcrt4.lib version.lib libcmt.lib libcpmt.lib oldnames.lib iphlpapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB /MANIFEST /ManifestFile:"Debug\Tutorials.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\THINK7\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.pdb" /SUBSYSTEM:WINDOWS /LARGEADDRESSAWARE /OPT:NOREF /OPT:NOICF /TLBID:1 /DYNAMICBASE /NXCOMPAT:NO /IMPLIB:"C:\Users\THINK7\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.lib" /MACHINE:X86 Debug\resource.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Tutorials.exe" /INCREMENTAL /NOLOGO EsenthelEngine.lib winmm.lib wininet.lib ws2_32.lib imm32.lib psapi.lib rpcrt4.lib version.lib libcmt.lib libcpmt.lib oldnames.lib iphlpapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB /MANIFEST /ManifestFile:"Debug\Tutorials.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"V:\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.pdb" /SUBSYSTEM:WINDOWS /LARGEADDRESSAWARE /OPT:NOREF /OPT:NOICF /TLBID:1 /DYNAMICBASE /NXCOMPAT:NO /IMPLIB:"V:\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.lib" /MACHINE:X86 Debug\resource.res
          Debug\Tutorials.exe.embed.manifest.res
          "Debug\03 - Image.obj"
          Debug\stdafx.obj /IGNORE:4078 
@@ -20,12 +20,12 @@
          All outputs are up-to-date.
        LinkEmbedManifest:
          All outputs are up-to-date.
-         Tutorials.vcxproj -> C:\Users\THINK7\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.exe
+         Tutorials.vcxproj -> V:\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.exe
        FinalizeBuildStatus:
          Deleting file "Debug\Tutorials.unsuccessfulbuild".
          Touching "Debug\Tutorials.lastbuildstate".
-     1>Done Building Project "C:\Users\THINK7\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.vcxproj" (build target(s)).
+     1>Done Building Project "V:\Documents\GitHub\GameJam_2013\Tutorials\Tutorials.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.57
+Time Elapsed 00:00:01.34

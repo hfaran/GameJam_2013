@@ -3,6 +3,11 @@
 #include <string>
 #include <sstream>
 
+//TODO
+//-Get rid of numbers based on chip's dimensions so that
+//	the functions are actually reusable if other characters
+//	are sized differently
+
 // Structs;
 struct Player {
 	Flt x;
@@ -12,6 +17,8 @@ struct Player {
 	int jumpCount;
 	bool facingLeft;
 	bool falling;
+	Flt frameCounter;
+	Image frame[10];
 };
 
 // Function prototypes
@@ -21,14 +28,15 @@ void initPlayer( Player &p );
 void initPlatform( );
 bool collision(Rect A, Rect B);
 bool onTop(Rect A, Rect B);
-void playerInput( Player &p );
-void playerUpdate( Player &p );
+//These functions should be methods, maybe?
+void handleInput( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
+void playerUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
+void movePlayer( int moveType, Player &p ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
+void handleJump( Player &p );
+void drawPlayer( Player &p );
 
-
-// Variables
+// Objects
 Image bg; // image object
-Image frame[10];
-Flt frameCounter;
 Player chip;
 Rect ground, platform[3];
 
@@ -42,16 +50,17 @@ void InitPre()
 Bool Init()
 {
 	bg.load("_Assets/ChipGame/lololol.gfx"); // load image from file
-	frame[0].load("_Assets/ChipGame/frame1.gfx");
-	frame[1].load("_Assets/ChipGame/frame2.gfx");
-	frame[2].load("_Assets/ChipGame/frame3.gfx");
-	frame[3].load("_Assets/ChipGame/frame4.gfx");
-	frame[4].load("_Assets/ChipGame/frame5.gfx");
-	frame[5].load("_Assets/ChipGame/frame6.gfx");
-	frame[6].load("_Assets/ChipGame/frame7.gfx");
-	frame[7].load("_Assets/ChipGame/frame8.gfx");
-	frame[8].load("_Assets/ChipGame/frame9.gfx");
-	frame[9].load("_Assets/ChipGame/frame10.gfx");
+	{ //Load frames for chip
+	chip.frame[0].load("_Assets/ChipGame/frame1.gfx");
+	chip.frame[1].load("_Assets/ChipGame/frame2.gfx");
+	chip.frame[2].load("_Assets/ChipGame/frame3.gfx");
+	chip.frame[3].load("_Assets/ChipGame/frame4.gfx");
+	chip.frame[4].load("_Assets/ChipGame/frame5.gfx");
+	chip.frame[5].load("_Assets/ChipGame/frame6.gfx");
+	chip.frame[6].load("_Assets/ChipGame/frame7.gfx");
+	chip.frame[7].load("_Assets/ChipGame/frame8.gfx");
+	chip.frame[8].load("_Assets/ChipGame/frame9.gfx");
+	chip.frame[9].load("_Assets/ChipGame/frame10.gfx"); }
 
 	initPlayer(chip);
 	initPlatform();
@@ -68,8 +77,7 @@ Bool Update()
 
 	if(Kb.bp(KB_ESC))return false;
 
-	playerInput( chip );
-	playerUpdate( chip );
+	playerUpdate( chip, KB_UP, KB_LEFT, KB_RIGHT );
 
 	return true;
 }
@@ -78,22 +86,11 @@ void Draw()
 {
 	D.clear(BLACK);
 
+	// draw background
+	bg.draw(Rect(-1.778645833333f, -1.0f, 1.778645833333f, 1.0f));
 
-	// draw image
-	bg.draw(Rect(-1.778645833333f, -1.0f, 1.778645833333f, 1.0f)); // draw at given rectangle
-	if(chip.facingLeft) {
-		chip.player->draw(Rect(chip.x+2*121.094E-3f, chip.y, chip.x, chip.y+2*174.479E-3));
-	} else {
-		chip.player->draw(Rect(chip.x, chip.y, chip.x+2*121.094E-3f, chip.y+2*174.479E-3));
-	}
-
-	/*ground.draw(BLUE, true);
-	platform[0].draw(BLUE, true);
-	platform[1].draw(BLUE, true);
-	platform[2].draw(BLUE, true);*/
+	drawPlayer( chip );
 }
-
-
 
 bool collision(Rect A, Rect B)
 {
@@ -149,44 +146,30 @@ Flt convertX(Flt x)
 	return (x-683.0)/384.0;
 }
 
-void playerInput( Player &p )
+void handleInput( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 {
-	
-	if(Kb.b(KB_UP) && p.jumpCount == 0) {
-		p.jumping = true;
+	if(Kb.b(jump) && p.jumpCount == 0) {
+		movePlayer(4, p);
 	}
-
-	if(Kb.b(KB_LEFT)) {
-		p.facingLeft = true;
-		p.x -= Time.d()/2;
-
-		if(p.x < -1.778645833333f)
-			p.x = -1.778645833333f;
-
-		if(frameCounter<9)
-			frameCounter += 0.3333;
-		else
-			frameCounter=0; 
+	if(Kb.b(left)) {
+		movePlayer(1, p);
 	}
-	else if(Kb.b(KB_RIGHT)) {
-		p.facingLeft = false;
-		p.x += Time.d()/2;
-
-		if(p.x+2*121.094E-3f > 1.778645833333f)
-			p.x = 1.778645833333f-2*121.094E-3f;
-		
-		if(frameCounter<9)
-			frameCounter += 0.3333;
-		else
-			frameCounter=0; 
+	else if(Kb.b(right)) {
+		movePlayer(2, p);
 	}
 	else {
-		if(frameCounter<9)
-			frameCounter++; 
+		movePlayer(3, p);
 	}
 }
 
-void playerUpdate( Player &p )
+void playerUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
+{
+	handleInput( p, jump, left, right );
+	handleJump( p );
+	p.player = &p.frame[(int) p.frameCounter];
+}
+
+void handleJump( Player &p )
 {
 	if(p.jumping && p.jumpCount < 35) {
 		p.y += .015f;
@@ -197,6 +180,50 @@ void playerUpdate( Player &p )
 	} else if(p.jumping && p.jumpCount >= 35) {
 		p.jumping = false;
 	}
+}
 
-	p.player = &frame[(int) frameCounter];
+//1 = move left, 2 = move right, 3 = stop, 4 = jump
+void movePlayer( int moveType, Player &p )
+{
+	switch (moveType) {
+	case 1:
+		p.facingLeft = true;
+		p.x -= Time.d()/2;
+		if(p.x < -1.778645833333f)
+			p.x = -1.778645833333f;
+
+		if(p.frameCounter<9)
+			p.frameCounter += 0.3333;
+		else
+			p.frameCounter=0;
+		break;
+	case 2:
+		p.facingLeft = false;
+		p.x += Time.d()/2;
+
+		if(p.x+2*121.094E-3f > 1.778645833333f)
+			p.x = 1.778645833333f-2*121.094E-3f;
+
+		if(p.frameCounter<9)
+			p.frameCounter += 0.3333;
+		else
+			p.frameCounter=0;
+		break;
+	case 3:
+		if(p.frameCounter<9)
+			p.frameCounter++;
+		break;
+	case 4:
+		p.jumping = true;
+		break;
+	}
+}
+
+void drawPlayer( Player &p )
+{
+	if(p.facingLeft) {
+		p.player->draw(Rect(p.x+2*121.094E-3f, p.y, p.x, p.y+2*174.479E-3));
+	} else {
+		p.player->draw(Rect(p.x, p.y, p.x+2*121.094E-3f, p.y+2*174.479E-3));
+	}
 }
