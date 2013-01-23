@@ -87,10 +87,10 @@ void Draw()
 		chip.player->draw(Rect(chip.x, chip.y, chip.x+2*121.094E-3f, chip.y+2*174.479E-3));
 	}
 
-	ground.draw(BLUE, true);
+	/*ground.draw(BLUE, true);
 	platform[0].draw(BLUE, true);
 	platform[1].draw(BLUE, true);
-	platform[2].draw(BLUE, true);
+	platform[2].draw(BLUE, true);*/
 }
 
 
