@@ -31,7 +31,7 @@ bool collision(Rect A, Rect B);
 bool onTop(Rect A, Rect B);
 //These functions should be methods, maybe?
 void handleInput( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
-void currentFrameUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
+void playerUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
 void movePlayer( int moveType, Player &p ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
 void handleJump( Player &p );
 void drawPlayer( Player &p );
@@ -86,7 +86,7 @@ Bool Update()
 
 	if(Kb.bp(KB_ESC))return false;
 
-	currentFrameUpdate( chip, KB_UP, KB_LEFT, KB_RIGHT );
+	playerUpdate( chip, KB_UP, KB_LEFT, KB_RIGHT );
 	Music.play(mtIdle);
 
 	return true;
@@ -177,7 +177,7 @@ void handleInput( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 	}
 }
 
-void currentFrameUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
+void playerUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 {
 	handleInput( p, jump, left, right );
 	handleJump( p );
