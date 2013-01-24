@@ -3,29 +3,23 @@
 #include <string>
 #include <sstream>
 
-//TODO
-//-Get rid of numbers based on chip's dimensions so that
-//	the functions are actually reusable if other characters
-//	are sized differently
-
-// Structs;
-
 #define RES_Y 768.0f
 #define RES_X 1366.0f
 
+// Structs
 struct Player {
-	Flt x;
-	Flt y;
-	Image *player;
-	bool jumping;
+	Flt x; //x-coordinate of Player
+	Flt y; //y-coordinate of Player
+	Image *currentFrame; //pointer to current frame of animation
+	bool jumping; 
 	int jumpCount;
-	bool facingLeft;
+	bool facingLeft; //Indicates whether to flip when drawing
 	bool falling;
-	Flt frameCounter;
-	Image frame[10];
-	int pixelX;
-	int pixelY;
-	Flt movementSpeed;
+	Flt frameCounter; //index of frame array for the current frame of animation
+	Image frame[10]; //Array of images holding the animations
+	int pixelX; //X-dimension of the frames in pixels
+	int pixelY; //Y-dimension of the frames in pixels
+	Flt movementSpeed; //movement speed of the Player (default = 1.0f)
 };
 
 // Function prototypes
@@ -37,7 +31,7 @@ bool collision(Rect A, Rect B);
 bool onTop(Rect A, Rect B);
 //These functions should be methods, maybe?
 void handleInput( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
-void playerUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
+void currentFrameUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
 void movePlayer( int moveType, Player &p ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
 void handleJump( Player &p );
 void drawPlayer( Player &p );
@@ -92,7 +86,7 @@ Bool Update()
 
 	if(Kb.bp(KB_ESC))return false;
 
-	playerUpdate( chip, KB_UP, KB_LEFT, KB_RIGHT );
+	currentFrameUpdate( chip, KB_UP, KB_LEFT, KB_RIGHT );
 	Music.play(mtIdle);
 
 	return true;
@@ -183,11 +177,11 @@ void handleInput( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 	}
 }
 
-void playerUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
+void currentFrameUpdate( Player &p, KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 {
 	handleInput( p, jump, left, right );
 	handleJump( p );
-	p.player = &p.frame[(int) p.frameCounter];
+	p.currentFrame = &p.frame[(int) p.frameCounter];
 }
 
 void handleJump( Player &p )
@@ -244,8 +238,8 @@ void movePlayer( int moveType, Player &p )
 void drawPlayer( Player &p )
 {
 	if(p.facingLeft) {
-		p.player->draw(Rect(p.x+2*p.pixelX/RES_Y, p.y, p.x, p.y+2*p.pixelY/RES_Y));
+		p.currentFrame->draw(Rect(p.x+2*p.pixelX/RES_Y, p.y, p.x, p.y+2*p.pixelY/RES_Y));
 	} else {
-		p.player->draw(Rect(p.x, p.y, p.x+2*p.pixelX/RES_Y, p.y+2*p.pixelY/RES_Y));
+		p.currentFrame->draw(Rect(p.x, p.y, p.x+2*p.pixelX/RES_Y, p.y+2*p.pixelY/RES_Y));
 	}
 }
