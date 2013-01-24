@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "main.h"
 
 void Player::drawPlayer( )
 {

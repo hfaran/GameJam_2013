@@ -3,9 +3,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#define RES_Y 768.0f
-#define RES_X 1366.0f
-
 struct Player {
 	Flt x; //x-coordinate of Player
 	Flt y; //y-coordinate of Player
