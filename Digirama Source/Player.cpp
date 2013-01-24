@@ -51,13 +51,15 @@ void Player::movePlayer( int moveType )
 
 void Player::handleJump( )
 {
-	if(this->jumping && this->jumpCount < 25) {
-		this->y += .0225f;
+	//These numbers should probably be definitions instead.
+
+	if(this->jumping && this->jumpCount < JUMP_TIME) { 
+		this->y += (JUMP_TIME - jumpCount) * (JUMP_TIME - jumpCount) * JUMP_SPEED; 
 		this->jumpCount++;
 	} else if(!this->jumping && this->jumpCount > 0) {
-		this->y -= .0225f; //Jump Speed
+		this->y -= (JUMP_TIME + 1 - jumpCount) * (JUMP_TIME + 1 - jumpCount) * JUMP_SPEED; 
 		this->jumpCount--;
-	} else if(this->jumping && this->jumpCount >= 25) {
+	} else if(this->jumping && this->jumpCount >= JUMP_TIME) {
 		this->jumping = false;
 	}
 }
