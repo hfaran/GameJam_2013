@@ -9,6 +9,10 @@
 //	are sized differently
 
 // Structs;
+
+#define RES_Y 768.0f
+#define RES_X 1366.0f
+
 struct Player {
 	Flt x;
 	Flt y;
@@ -19,12 +23,15 @@ struct Player {
 	bool falling;
 	Flt frameCounter;
 	Image frame[10];
+	int pixelX;
+	int pixelY;
+	Flt movementSpeed;
 };
 
 // Function prototypes
 Flt convertY(Flt y);
 Flt convertX(Flt x);
-void initPlayer( Player &p );
+void initPlayer( Player &p, int pX, int pY, Flt moveSpeed=1.0f );
 void initPlatform( );
 bool collision(Rect A, Rect B);
 bool onTop(Rect A, Rect B);
@@ -47,7 +54,7 @@ void InitPre()
 {
 	App.name("Game_001");
 	Paks.add("_Assets/engine.pak");
-	D.mode(1366,768);
+	D.mode(RES_X,RES_Y);
 }
 
 Bool Init()
@@ -70,7 +77,7 @@ Bool Init()
       mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
 	}
 
-	initPlayer(chip);
+	initPlayer(chip, 93, 134);
 	initPlatform();
 
 	return true;
@@ -96,7 +103,7 @@ void Draw()
 	D.clear(BLACK);
 
 	// draw background
-	bg.draw(Rect(-1.778645833333f, -1.0f, 1.778645833333f, 1.0f));
+	bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));
 
 	drawPlayer( chip );
 }
@@ -129,14 +136,17 @@ bool onTop(Rect A, Rect B)
 		return false;
 }
 
-void initPlayer( Player &p )
+void initPlayer( Player &p, int pX, int pY, Flt moveSpeed )
 {
-	p.x = -121.094E-3f;
+	p.x = -RES_X/RES_Y * 0.9f;
 	p.y = -0.75f;
 	p.jumping = false;
 	p.jumpCount = 0;
 	p.facingLeft = false;
 	p.falling=true;
+	p.pixelX = pX;
+	p.pixelY = pY;
+	p.movementSpeed = moveSpeed;
 }
 
 void initPlatform( )
@@ -199,9 +209,10 @@ void movePlayer( int moveType, Player &p )
 	switch (moveType) {
 	case 1:
 		p.facingLeft = true;
-		p.x -= Time.d()/2;
-		if(p.x < -1.778645833333f)
-			p.x = -1.778645833333f;
+		p.x -= Time.d()*p.movementSpeed;
+
+		if(p.x < (Flt) -RES_X/RES_Y)
+			p.x = (Flt) -RES_X/RES_Y;
 
 		if(p.frameCounter<9)
 			p.frameCounter += 0.3333;
@@ -210,10 +221,10 @@ void movePlayer( int moveType, Player &p )
 		break;
 	case 2:
 		p.facingLeft = false;
-		p.x += Time.d()/2;
+		p.x += Time.d()*p.movementSpeed;
 
-		if(p.x+2*121.094E-3f > 1.778645833333f)
-			p.x = 1.778645833333f-2*121.094E-3f;
+		if(p.x+2*(Flt) p.pixelX/RES_Y > RES_X/RES_Y)
+			p.x = RES_X/RES_Y-2*p.pixelX/RES_Y;
 
 		if(p.frameCounter<9)
 			p.frameCounter += 0.3333;
@@ -233,8 +244,8 @@ void movePlayer( int moveType, Player &p )
 void drawPlayer( Player &p )
 {
 	if(p.facingLeft) {
-		p.player->draw(Rect(p.x+2*121.094E-3f, p.y, p.x, p.y+2*174.479E-3));
+		p.player->draw(Rect(p.x+2*p.pixelX/RES_Y, p.y, p.x, p.y+2*p.pixelY/RES_Y));
 	} else {
-		p.player->draw(Rect(p.x, p.y, p.x+2*121.094E-3f, p.y+2*174.479E-3));
+		p.player->draw(Rect(p.x, p.y, p.x+2*p.pixelX/RES_Y, p.y+2*p.pixelY/RES_Y));
 	}
 }
