@@ -7,7 +7,7 @@
 
 // Function prototypes
 
-void initPlatform( );
+void initPlatform( int Level );
 
 
 

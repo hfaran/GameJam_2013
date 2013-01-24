@@ -30,27 +30,25 @@ Bool Init()
 	bg.load("_Assets/ChipGame/gfx/lololol.gfx"); // load bg
 
 	{ //Load frames for chip
-	chip.frame[0].load("_Assets/ChipGame/gfx/frame1.gfx");
-	chip.frame[1].load("_Assets/ChipGame/gfx/frame2.gfx");
-	chip.frame[2].load("_Assets/ChipGame/gfx/frame3.gfx");
-	chip.frame[3].load("_Assets/ChipGame/gfx/frame4.gfx");
-	chip.frame[4].load("_Assets/ChipGame/gfx/frame5.gfx");
-	chip.frame[5].load("_Assets/ChipGame/gfx/frame6.gfx");
-	chip.frame[6].load("_Assets/ChipGame/gfx/frame7.gfx");
-	chip.frame[7].load("_Assets/ChipGame/gfx/frame8.gfx");
-	chip.frame[8].load("_Assets/ChipGame/gfx/frame9.gfx");
-	chip.frame[9].load("_Assets/ChipGame/gfx/frame10.gfx"); }
+		chip.frame[0].load("_Assets/ChipGame/gfx/frame1.gfx");
+		chip.frame[1].load("_Assets/ChipGame/gfx/frame2.gfx");
+		chip.frame[2].load("_Assets/ChipGame/gfx/frame3.gfx");
+		chip.frame[3].load("_Assets/ChipGame/gfx/frame4.gfx");
+		chip.frame[4].load("_Assets/ChipGame/gfx/frame5.gfx");
+		chip.frame[5].load("_Assets/ChipGame/gfx/frame6.gfx");
+		chip.frame[6].load("_Assets/ChipGame/gfx/frame7.gfx");
+		chip.frame[7].load("_Assets/ChipGame/gfx/frame8.gfx");
+		chip.frame[8].load("_Assets/ChipGame/gfx/frame9.gfx");
+		chip.frame[9].load("_Assets/ChipGame/gfx/frame10.gfx"); }
 
 	//Load Esenthel Logo for startup
 	esenthelLogo.eLogo.load("_Assets/ChipGame/gfx/logo.gfx");
 
-
-	if(!mtIdle.songs()){
-	  mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
-	}
+	if(!mtIdle.songs())
+		mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
 
 	chip.initPlayer(93, 134);
-	initPlatform();
+	initPlatform( 1 );
 
 	esenthelLogo.start(); // create background loader
 
@@ -86,11 +84,16 @@ void Draw()
 
 //---------------Non-engine Functions-----------------------------//
 
-void initPlatform( )
+void initPlatform( int Level )
 {
-	ground = Rect(convertX(0), convertY(664), convertX(1366), convertY(768));
-	platform[0] = Rect(convertX(469), convertY(497), convertX(296), convertY(543));
-	platform[1] = Rect(convertX(1366), convertY(357), convertX(1019), convertY(405));
-	platform[2] = Rect(convertX(1366), convertY(497), convertX(727), convertY(543));
+	switch (Level) {
+	case 1:
+		ground = Rect(convertX(0), convertY(664), convertX(1366), convertY(768));
+		platform[0] = Rect(convertX(469), convertY(497), convertX(296), convertY(543));
+		platform[1] = Rect(convertX(1366), convertY(357), convertX(1019), convertY(405));
+		platform[2] = Rect(convertX(1366), convertY(497), convertX(727), convertY(543));
+		break;
+	}
+
 }
 
