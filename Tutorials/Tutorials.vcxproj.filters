@@ -95,7 +95,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>H\_\Extra</Filter>
     </ClCompile>
-    <ClCompile Include="Source\03 - Image.cpp">
+    <ClCompile Include="Source\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
