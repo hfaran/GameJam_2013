@@ -9,13 +9,14 @@ struct BackgroundLoader
    // static functions
    static Bool BackgroundLoad(Thread &thread) // this function will be called in the secondary thread to load the initial world data
    {
-	  Time.wait(LOAD_TIME); // wait 2 seconds just for the needs of tutorial to make the loading screen not disappear too quickly
+	  Time.wait(loadTime); // wait 2 seconds just for the needs of tutorial to make the loading screen not disappear too quickly
 	  return false; // don't continue the thread
    }
 
    // members
    Thread thread;
    Image eLogo;
+   static const int loadTime=2000; //The time the esenthel logo (and other logos) show in ms
 
    // methods
    void del() // delete background loader

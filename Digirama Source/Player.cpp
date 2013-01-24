@@ -53,13 +53,13 @@ void Player::handleJump( )
 {
 	//These numbers should probably be definitions instead.
 
-	if(this->jumping && this->jumpCount < JUMP_TIME) { 
-		this->y += (JUMP_TIME - jumpCount) * (JUMP_TIME - jumpCount) * JUMP_SPEED; 
+	if(this->jumping && this->jumpCount < this->jumpTime) { 
+		this->y += (this->jumpTime - this->jumpCount) * (this->jumpTime - this->jumpCount) * this->jumpSpeed; 
 		this->jumpCount++;
 	} else if(!this->jumping && this->jumpCount > 0) {
-		this->y -= (JUMP_TIME + 1 - jumpCount) * (JUMP_TIME + 1 - jumpCount) * JUMP_SPEED; 
+		this->y -= (this->jumpTime + 1 - this->jumpCount) * (this->jumpTime + 1 - this->jumpCount) * this->jumpSpeed; 
 		this->jumpCount--;
-	} else if(this->jumping && this->jumpCount >= JUMP_TIME) {
+	} else if(this->jumping && this->jumpCount >= this->jumpTime) {
 		this->jumping = false;
 	}
 }
@@ -87,7 +87,7 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 	this->currentFrame = &this->frame[(int) this->frameCounter];
 }
 
-void Player::initPlayer( int pX, int pY, float moveSpeed )
+void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime )
 {
 	this->x = -RES_X/RES_Y * 0.9f;
 	this->y = -0.75f;
@@ -98,6 +98,8 @@ void Player::initPlayer( int pX, int pY, float moveSpeed )
 	this->pixelX = pX;
 	this->pixelY = pY;
 	this->movementSpeed = moveSpeed;
+	this->jumpTime = jTime;
+	this->jumpSpeed = jSpeed;
 }
 
 
