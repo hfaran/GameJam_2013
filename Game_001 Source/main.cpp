@@ -68,7 +68,7 @@ Bool Init()
 	chip.frame[9].load("_Assets/ChipGame/frame10.gfx"); }
 
 	if(!mtIdle.songs()){
-      mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
+	  mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
 	}
 
 	initPlayer(chip, 93, 134);
