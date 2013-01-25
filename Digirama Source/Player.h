@@ -20,10 +20,10 @@ struct Player {
 	Flt movementSpeed; //movement speed of the Player (default = 1.0f)
 	
 	Image *currentFrame; //pointer to current frame of animation
-	int numFrames;
+	int numFrames;		//total # of animation frames
 	Flt frameCounter; //index of frame array for the current frame of animation
 	Image * frame; //Dynamic array of images holding the animations
-	Flt animSpeed;
+	Flt animSpeed; //speed of animation cycle (default 0.3333)
 
 	
 	void initPlayer( int pX, int pY, float moveSpeed=1.0f, 

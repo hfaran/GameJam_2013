@@ -4,6 +4,7 @@
 
 void Player::drawPlayer( )
 {
+	// If Player if facing left, flip him, otherwise, draw him normally
 	if(this->facingLeft) {
 		this->currentFrame->draw(Rect(this->x+2*this->pixelX/RES_Y, this->y,
 										this->x, this->y+2*this->pixelY/RES_Y));
@@ -21,31 +22,40 @@ void Player::movePlayer( int moveType )
 		this->facingLeft = true;
 		this->x -= Time.d()*this->movementSpeed;
 
+		//If trying to move off-screen, stop him
 		if(this->x < (Flt) -RES_X/RES_Y)
 			this->x = (Flt) -RES_X/RES_Y;
 
+		//Animation
 		if(this->frameCounter<(this->numFrames-1))
 			this->frameCounter += this->animSpeed;
 		else
 			this->frameCounter=0;
 		break;
+
 	case 2:
 		this->facingLeft = false;
 		this->x += Time.d()*this->movementSpeed;
 
+		//If trying to move off-screen, stop him
 		if(this->x+2*(Flt) this->pixelX/RES_Y > RES_X/RES_Y)
 			this->x = RES_X/RES_Y-2*this->pixelX/RES_Y;
 
+		//Animation
 		if(this->frameCounter<(this->numFrames-1))
 			this->frameCounter += this->animSpeed;
 		else
 			this->frameCounter=0;
 		break;
+
 	case 3:
+		//Rapid cycle (if unity animSpeed is rapid) to stop animation
 		if(this->frameCounter<(this->numFrames-1))
 			this->frameCounter++;
 		break;
+
 	case 4:
+		// Set jumping and let handleJump take care of the rest
 		this->jumping = true;
 		break;
 	}
@@ -53,8 +63,6 @@ void Player::movePlayer( int moveType )
 
 void Player::handleJump( )
 {
-	//These numbers should probably be definitions instead.
-
 	if(this->jumping && this->jumpCount < this->jumpTime) { 
 		this->y += (this->jumpTime - this->jumpCount) * (this->jumpTime - this->jumpCount) * this->jumpSpeed; 
 		this->jumpCount++;
@@ -68,6 +76,7 @@ void Player::handleJump( )
 
 void Player::handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 {
+	//Call movePlayer to handle movement based on given input
 	if(Kb.b(jump) && this->jumpCount == 0) {
 		movePlayer(4);
 	}
@@ -84,15 +93,19 @@ void Player::handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 
 void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 {
+	//Check for key presses then move player
 	handleInput( jump, left, right );
+	//Handle jumping if needed
 	handleJump( );
+	//Update animation frame
 	this->currentFrame = &this->frame[(int) this->frameCounter];
 }
 
+// Initializes all instance variables
 void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime, int nFrames, Flt animSpd )
 {
-	this->x = -RES_X/RES_Y * 0.9f;
-	this->y = -0.75f;
+	this->x = -RES_X/RES_Y * 0.9f; //Start at the ~edge of the screen
+	this->y = -0.75f;		//Start on the top of the floor
 	this->jumping = false;
 	this->jumpCount = 0;
 	this->facingLeft = false;
