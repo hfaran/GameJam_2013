@@ -1,7 +1,10 @@
 #include "stdafx.h"
+#include "customPhysics.h"
 
 bool collision(Rect A, Rect B)
 {
+	//Check boundaries of two rectangles to see
+	//	if they intersect
 	if(A.max.y>B.max.y && A.min.y<B.max.y)
 		if(A.max.x>B.max.x && A.min.x<B.max.x)
 			return true;
@@ -20,7 +23,9 @@ bool collision(Rect A, Rect B)
 
 bool onTop(Rect A, Rect B)
 {
-	if(B.max.y>A.max.y)
+	//If Player's feet are above the top of the platform
+	//	he's on top of it
+	if(B.min.y>A.max.y)
 		return true;
 	else
 		return false;
