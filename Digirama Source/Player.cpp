@@ -5,9 +5,11 @@
 void Player::drawPlayer( )
 {
 	if(this->facingLeft) {
-		this->currentFrame->draw(Rect(this->x+2*this->pixelX/RES_Y, this->y, this->x, this->y+2*this->pixelY/RES_Y));
+		this->currentFrame->draw(Rect(this->x+2*this->pixelX/RES_Y, this->y,
+										this->x, this->y+2*this->pixelY/RES_Y));
 	} else {
-		this->currentFrame->draw(Rect(this->x, this->y, this->x+2*this->pixelX/RES_Y, this->y+2*this->pixelY/RES_Y));
+		this->currentFrame->draw(Rect(this->x, this->y, 
+										this->x+2*this->pixelX/RES_Y, this->y+2*this->pixelY/RES_Y));
 	}
 }
 
@@ -22,8 +24,8 @@ void Player::movePlayer( int moveType )
 		if(this->x < (Flt) -RES_X/RES_Y)
 			this->x = (Flt) -RES_X/RES_Y;
 
-		if(this->frameCounter<9)
-			this->frameCounter += 0.3333;
+		if(this->frameCounter<(this->numFrames-1))
+			this->frameCounter += this->animSpeed;
 		else
 			this->frameCounter=0;
 		break;
@@ -34,13 +36,13 @@ void Player::movePlayer( int moveType )
 		if(this->x+2*(Flt) this->pixelX/RES_Y > RES_X/RES_Y)
 			this->x = RES_X/RES_Y-2*this->pixelX/RES_Y;
 
-		if(this->frameCounter<9)
-			this->frameCounter += 0.3333;
+		if(this->frameCounter<(this->numFrames-1))
+			this->frameCounter += this->animSpeed;
 		else
 			this->frameCounter=0;
 		break;
 	case 3:
-		if(this->frameCounter<9)
+		if(this->frameCounter<(this->numFrames-1))
 			this->frameCounter++;
 		break;
 	case 4:
@@ -69,7 +71,7 @@ void Player::handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 	if(Kb.b(jump) && this->jumpCount == 0) {
 		movePlayer(4);
 	}
-	if(Kb.b(left)) {
+	else if(Kb.b(left)) {
 		movePlayer(1);
 	}
 	else if(Kb.b(right)) {
@@ -87,7 +89,7 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 	this->currentFrame = &this->frame[(int) this->frameCounter];
 }
 
-void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime )
+void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime, int nFrames, Flt animSpd )
 {
 	this->x = -RES_X/RES_Y * 0.9f;
 	this->y = -0.75f;
@@ -100,6 +102,9 @@ void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime 
 	this->movementSpeed = moveSpeed;
 	this->jumpTime = jTime;
 	this->jumpSpeed = jSpeed;
+	this->numFrames = nFrames;
+	this->frame = new Image [numFrames];
+	this->animSpeed = animSpd;
 }
 
 

@@ -29,6 +29,9 @@ Bool Init()
 {
 	bg.load("_Assets/ChipGame/gfx/lololol.gfx"); // load bg
 
+	chip.initPlayer(93, 134);
+	initPlatform( 1 );
+
 	{ //Load frames for chip
 		chip.frame[0].load("_Assets/ChipGame/gfx/frame1.gfx");
 		chip.frame[1].load("_Assets/ChipGame/gfx/frame2.gfx");
@@ -44,11 +47,8 @@ Bool Init()
 	//Load Esenthel Logo for startup
 	esenthelLogo.eLogo.load("_Assets/ChipGame/gfx/logo.gfx");
 
-	if(!mtIdle.songs())
-		mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
-
-	chip.initPlayer(93, 134);
-	initPlatform( 1 );
+//	if(!mtIdle.songs())
+//		mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
 
 	esenthelLogo.start(); // create background loader
 
