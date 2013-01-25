@@ -47,8 +47,8 @@ Bool Init()
 	//Load Esenthel Logo for startup
 	esenthelLogo.eLogo.load("_Assets/ChipGame/gfx/logo.gfx");
 
-//	if(!mtIdle.songs())
-//		mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
+	if(!mtIdle.songs())
+		mtIdle+="_Assets/ChipGame/sound/LXTronic.ogg"; 
 
 	esenthelLogo.start(); // create background loader
 
