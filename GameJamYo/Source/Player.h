@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "customPhysics.h"
+#include "mathFunctions.h"
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -11,7 +13,6 @@ struct Player {
 
 	bool jumping; 
 	int jumpCount;
-	bool falling;
 	int jumpTime;//Number of frames the jump lasts
 	Flt jumpSpeed;//The distance the jump moves during one frame 
 					//(not exactly, is used in math to have a parabolic jump)
@@ -29,10 +30,10 @@ struct Player {
 	
 	void initPlayer( int pX, int pY, float moveSpeed=1.0f, 
 					Flt jSpeed=0.0001f, int jTime=25, int nFrames=10, Flt animSpd=0.3333 );
-	void handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
-	void playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
-	void movePlayer( int moveType ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
-	void handleJump(  );
+	void handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Pulse & pPulse );
+	void playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Pulse & pPulse, int collEdg );
+	void movePlayer( int moveType, Pulse & pPulse  ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
+	void handleJump( Pulse & pPulse );
 	void drawPlayer(  );
 };
 

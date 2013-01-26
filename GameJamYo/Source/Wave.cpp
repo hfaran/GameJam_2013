@@ -3,6 +3,9 @@
 #include "Wave.h"
 #include "mathFunctions.h"
 
+#define Tt 0.5f
+#define PULSE_SPEED .005f
+
 void Wave::initWave( Flt xPosition, Flt period, Flt Amp )
 {
 	xPos=xPosition;
@@ -65,26 +68,26 @@ void Pulse::updatePulse() {
 
 	waveys[0].xPos -= pSpeed;
 
-	if(waveys[0].xPos + 0.2f < -RES_X / RES_Y) {
-		for(int i=0;i<19;i++){
+	if(waveys[0].xPos + Tt < -RES_X / RES_Y) {
+		for(int i=0;i<waveCount-1;i++){
 			waveys[i].copyWave(waveys[i+1]);
 		}
-		for(int i=0;i<20;i++){
+		for(int i=0;i<waveCount;i++){
 			waveys[i].xPos -= pSpeed;
 		}
-		waveys[19].initWave(-RES_X / RES_Y + 0.2f * 19, 0.2f, calcAmp());
+		waveys[waveCount-1].initWave(-RES_X / RES_Y + Tt * (waveCount - 1), Tt, calcAmp());
 	} else {
-		for(int i=1;i<20;i++){
+		for(int i=1;i<waveCount;i++){
 			waveys[i].xPos -= pSpeed;
 		}
 	}
-	for(int i=0;i<20;i++){
+	for(int i=0;i<waveCount;i++){
 		waveys[i].updateWave();
 	}
 }
 
 void Pulse::drawPulse() {
-	for(int i=0;i<20;i++){
+	for(int i=0;i<waveCount;i++){
 		waveys[i].drawWave();
 		D.text(waveys[i].xPos, 0.5f, S+i);
 	}
@@ -92,10 +95,11 @@ void Pulse::drawPulse() {
 
 void Pulse::initPulse() {
 	flatNext = false;
-	pSpeed = .005f;
+	waveCount = RES_X / RES_Y * 2 / Tt + 3;
+	pSpeed = PULSE_SPEED;
 
-	for(int i=0;i<20;i++){
-		waveys[i].initWave(-RES_X / RES_Y + 0.2f * i, 0.2f, 0.0f);
+	for(int i=0;i<waveCount;i++){
+		waveys[i].initWave(-RES_X / RES_Y + Tt * i, Tt, 0.0f);
 	}
 
 }

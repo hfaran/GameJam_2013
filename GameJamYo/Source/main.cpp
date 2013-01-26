@@ -12,6 +12,7 @@ Image bg;
 Flt diff;
 Pulse pPulse;
 bool coll;
+int collEdge;
 
 void InitPre()
 {
@@ -24,7 +25,7 @@ Bool Init()
 {
 	bg.load("_Assets/ChipGame/gfx/lololol.gfx"); // load bg
 
-	guy.initPlayer(37.5,86,0.7f,.0001,25,11,1.0/10.0);
+	guy.initPlayer(37.5,86,0.7f,.0001,20,11,1.0/10.0);
 
 	guy.frame[0].load("_Assets/HeartGame/gfx/mofo01.gfx");
 	guy.frame[1].load("_Assets/HeartGame/gfx/mofo00.gfx");
@@ -53,10 +54,10 @@ Bool Update()
 {
 	if(Kb.bp(KB_ESC))return false;
 
-	guy.playerUpdate(KB_UP,KB_LEFT,KB_RIGHT);
-	pPulse.updatePulse();
+	collEdge = checkCollisionEdge(pPulse,guy.collBox);
 
-	coll = checkCollision(pPulse, guy.collBox);
+	guy.playerUpdate(KB_UP,KB_LEFT,KB_RIGHT, pPulse, collEdge);
+	pPulse.updatePulse();
 
 	return true;
 }
@@ -67,14 +68,10 @@ void Draw()
 	//bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));
 	pPulse.drawPulse();
 	guy.drawPlayer();
+
+
 	
 	D.text(-0.9f,0.9f,S+Time.fps());
-	D.text(0.9f,-0.9f,S+(int)guy.frameCounter);
-
-	if(coll)
-		D.text(0,0,S+"collision");
-	else
-		D.text(0,0,S+"nooooope");
 
 
 	

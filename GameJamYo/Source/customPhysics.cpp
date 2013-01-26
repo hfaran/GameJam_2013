@@ -15,14 +15,29 @@ bool onTop(Rect A, Rect B)
 bool checkCollision(Pulse &p, Rect collisionBox)
 {
 	bool coll = false;
-	for(int i=0; i<20; i++)
+	for(int i=0; i<p.waveCount; i++)
 	{
 		for(int j=0; j<5; j++)
 		{
-			coll = Cuts(p.waveys[i].beatCol[j], collisionBox);
+			coll = Cuts(p.waveys[i].beat[j], collisionBox);
 			if(coll)
 				return coll;
 		}
 	}
 	return false;
+}
+
+int checkCollisionEdge(Pulse &p, Rect collisionBox)
+{
+	bool coll = false;
+	for(int i=0; i<p.waveCount; i++)
+	{
+		for(int j=0; j<5; j++)
+		{
+			coll = Cuts(p.waveys[i].beat[j], collisionBox);
+			if(coll)
+				return j;
+		}
+	}
+	return -1;
 }

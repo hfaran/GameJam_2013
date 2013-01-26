@@ -25,6 +25,7 @@ struct Pulse {
 	Flt pSpeed; //Speed of the pulse in -x direction
 	Wave waveys[20];
 	bool flatNext;
+	int waveCount;
 	
 	void updatePulse();
 	void drawPulse();

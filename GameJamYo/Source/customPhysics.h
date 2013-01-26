@@ -6,5 +6,6 @@
 
 bool onTop(Rect A, Rect B);
 bool checkCollision(Pulse &p, Rect collisionBox);
+int checkCollisionEdge(Pulse &p, Rect collisionBox);
 
 #endif
