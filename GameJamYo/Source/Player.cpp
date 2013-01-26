@@ -5,13 +5,7 @@
 void Player::drawPlayer( )
 {
 	// If Player if facing left, flip him, otherwise, draw him normally
-	if(this->facingLeft) {
-		this->currentFrame->draw(Rect(this->x+2*this->pixelX/RES_Y, this->y,
-										this->x, this->y+2*this->pixelY/RES_Y));
-	} else {
-		this->currentFrame->draw(Rect(this->x, this->y, 
-										this->x+2*this->pixelX/RES_Y, this->y+2*this->pixelY/RES_Y));
-	}
+	currentFrame->draw(collBox);
 }
 
 //1 = move left, 2 = move right, 3 = stop, 4 = jump
@@ -97,6 +91,12 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 	handleInput( jump, left, right );
 	//Handle jumping if needed
 	handleJump( );
+	//Update the player collBox
+	if(this->facingLeft) {
+		collBox = Rect(this->x+2*this->pixelX/RES_Y, this->y, this->x, this->y+2*this->pixelY/RES_Y);
+	} else {
+		collBox = Rect(this->x, this->y,this->x+2*this->pixelX/RES_Y, this->y+2*this->pixelY/RES_Y);
+	}
 	//Update animation frame
 	this->currentFrame = &this->frame[(int) this->frameCounter];
 }

@@ -23,6 +23,20 @@ Bool Init()
 {
 	bg.load("_Assets/ChipGame/gfx/lololol.gfx"); // load bg
 
+	guy.initPlayer(37.5,86,0.7f,.0001,25,11,1.0/10.0);
+
+	guy.frame[0].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	guy.frame[1].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	guy.frame[2].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	guy.frame[3].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	guy.frame[4].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	guy.frame[5].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	guy.frame[6].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	guy.frame[7].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	guy.frame[8].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	guy.frame[9].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	guy.frame[10].load("_Assets/HeartGame/gfx/mofo00.gfx");
+
 	diff = 0.1f;
 
 	pPulse.initPulse();
@@ -38,6 +52,7 @@ Bool Update()
 {
 	if(Kb.bp(KB_ESC))return false;
 
+	guy.playerUpdate(KB_UP,KB_LEFT,KB_RIGHT);
 	pPulse.updatePulse();
 
 	return true;
@@ -46,8 +61,10 @@ Bool Update()
 void Draw()
 {
 	D.clear(BLACK);
-
+	guy.drawPlayer();
 	pPulse.drawPulse();
+	D.text(-0.9f,0.9f,S+Time.fps());
+	D.text(0.9f,-0.9f,S+(int)guy.frameCounter);
 
 	// draw image
 	//bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));

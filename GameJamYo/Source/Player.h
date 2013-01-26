@@ -24,7 +24,7 @@ struct Player {
 	Flt frameCounter; //index of frame array for the current frame of animation
 	Image * frame; //Dynamic array of images holding the animations
 	Flt animSpeed; //speed of animation cycle (default 0.3333)
-
+	Rect collBox; //Container for player image
 	
 	void initPlayer( int pX, int pY, float moveSpeed=1.0f, 
 					Flt jSpeed=0.0001f, int jTime=25, int nFrames=10, Flt animSpd=0.3333 );
