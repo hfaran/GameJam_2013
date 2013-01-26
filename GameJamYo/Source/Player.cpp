@@ -153,6 +153,45 @@ void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime,
 	this->frame = new Image [numFrames];
 	this->animSpeed = animSpd;
 	this->gameOver = false;
+
+	this->frame[0].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	this->frame[1].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	this->frame[2].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	this->frame[3].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	this->frame[4].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	this->frame[5].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	this->frame[6].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	this->frame[7].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	this->frame[8].load("_Assets/HeartGame/gfx/mofo01.gfx");
+	this->frame[9].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	this->frame[10].load("_Assets/HeartGame/gfx/mofo00.gfx");
 }
 
 
+//***************             BUCKET FUNCTIONS                      ************//
+void Player::initBucket( int pX, int pY )
+{
+	b_x = x;
+	b_y = y;
+	b_pixelX = pX;
+	b_pixelY = pY;
+
+	bucket.load("_Assets/HeartGame/gfx/bowl00.gfx");
+}
+
+void Player::updateBucket()
+{
+	b_x = x;
+	b_y = y;
+	if(this->facingLeft) {
+		b_drawBox = Rect(drawBox.min.x+161/RES_Y - 2*(-drawBox.max.x+drawBox.min.x), drawBox.max.y-175/RES_Y, drawBox.min.x+75/RES_Y-2*(-drawBox.max.x+drawBox.min.x), drawBox.max.y-125/RES_Y);
+	b_collBox = Rect(collBox.min.x+75/RES_Y - 1.5*(-drawBox.max.x+drawBox.min.x), collBox.max.y-175/RES_Y, collBox.min.x+161/RES_Y - 1.5*(-drawBox.max.x+drawBox.min.x), collBox.max.y-125/RES_Y);
+	} else {
+	b_drawBox = Rect(drawBox.min.x+75/RES_Y, drawBox.max.y-175/RES_Y, drawBox.min.x+161/RES_Y, drawBox.max.y-125/RES_Y);
+	b_collBox = Rect(collBox.min.x+75/RES_Y, collBox.max.y-175/RES_Y, collBox.min.x+161/RES_Y, collBox.max.y-125/RES_Y);}
+}
+
+void Player::drawBucket()
+{
+	bucket.draw(b_drawBox);
+}

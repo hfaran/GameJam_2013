@@ -16,6 +16,19 @@ void NPC::initNPC( int pX, int pY, int nFrames, Flt animSpd )
 
 	this->Stage=0;
 	this->numStages=4;
+
+	this->frame[0].load("_Assets/HeartGame/gfx/heart00.gfx");
+	this->frame[1].load("_Assets/HeartGame/gfx/heart01.gfx");
+	this->frame[2].load("_Assets/HeartGame/gfx/heart02.gfx");
+	this->frame[3].load("_Assets/HeartGame/gfx/heart00.gfx");
+	this->frame[4].load("_Assets/HeartGame/gfx/heart01.gfx");
+	this->frame[5].load("_Assets/HeartGame/gfx/heart02.gfx");
+	this->frame[6].load("_Assets/HeartGame/gfx/heart00.gfx");
+	this->frame[7].load("_Assets/HeartGame/gfx/heart01.gfx");
+	this->frame[8].load("_Assets/HeartGame/gfx/heart02.gfx");
+	this->frame[9].load("_Assets/HeartGame/gfx/heart00.gfx");
+	this->frame[10].load("_Assets/HeartGame/gfx/heart01.gfx");
+	this->frame[11].load("_Assets/HeartGame/gfx/heart02.gfx");
 }
 
 void NPC::updateNPC( /*int score, int time*/ )

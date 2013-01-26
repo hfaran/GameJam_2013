@@ -47,7 +47,12 @@ void Wave::updateWave()
 void Wave::drawWave( )
 {
 	for( int i=0; i<5; i++ ) {
-		this->beat[i].draw(RED);
+		this->beat[i].draw(ColorAlpha(RED, 0.1), 0.030f);
+		this->beat[i].draw(ColorAlpha(RED, 0.2), 0.025f);
+		this->beat[i].draw(ColorAlpha(RED, 0.3), 0.020f);
+		this->beat[i].draw(ColorAlpha(RED, 0.4), 0.015f);
+		this->beat[i].draw(ColorAlpha(RED, 0.5), 0.010f);
+		this->beat[i].draw(RED, 0.005f);
 		//this->beatCol[i].draw(GREEN);
 	}
 }

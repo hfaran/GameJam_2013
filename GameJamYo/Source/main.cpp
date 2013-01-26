@@ -14,7 +14,7 @@ Flt diff;
 Pulse pPulse;
 bool coll;
 int collEdge;
-
+int score=0;
 NPC heart;
 
 void InitPre()
@@ -26,42 +26,11 @@ void InitPre()
 
 Bool Init()
 {
-	bg.load("_Assets/ChipGame/gfx/lololol.gfx"); // load bg
+	//bg.load("_Assets/ChipGame/gfx/lololol.gfx"); // load bg
 
-	guy.initPlayer(37.5,86,0.7f,.0001,20,11,1.0/10.0);
+	guy.initPlayer(53,106,0.7f,.0001,20,11,1.0/10.0);
 	heart.initNPC(1600,580,12,1.0/10.0);
-
-	guy.frame[0].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	guy.frame[1].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	guy.frame[2].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	guy.frame[3].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	guy.frame[4].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	guy.frame[5].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	guy.frame[6].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	guy.frame[7].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	guy.frame[8].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	guy.frame[9].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	guy.frame[10].load("_Assets/HeartGame/gfx/mofo00.gfx");
-
-	heart.frame[0].load("_Assets/HeartGame/gfx/heart00.gfx");
-	heart.frame[1].load("_Assets/HeartGame/gfx/heart01.gfx");
-	heart.frame[2].load("_Assets/HeartGame/gfx/heart02.gfx");
-	heart.frame[3].load("_Assets/HeartGame/gfx/heart00.gfx");
-	heart.frame[4].load("_Assets/HeartGame/gfx/heart01.gfx");
-	heart.frame[5].load("_Assets/HeartGame/gfx/heart02.gfx");
-	heart.frame[6].load("_Assets/HeartGame/gfx/heart00.gfx");
-	heart.frame[7].load("_Assets/HeartGame/gfx/heart01.gfx");
-	heart.frame[8].load("_Assets/HeartGame/gfx/heart02.gfx");
-	heart.frame[9].load("_Assets/HeartGame/gfx/heart00.gfx");
-	heart.frame[10].load("_Assets/HeartGame/gfx/heart01.gfx");
-	heart.frame[11].load("_Assets/HeartGame/gfx/heart02.gfx");
-
-	/*int z=0;
-	for(int j=0; j<4; j++)
-		for(int i=0; i<3; i++) {
-			heart.frame[z].load(S+"_Assets/HeartGame/gfx/heart0"+i+".gfx");
-			z++;
-		}*/
+	guy.initBucket(43,25);
 
 
 	diff = 0.1f;
@@ -84,6 +53,7 @@ Bool Update()
 	heart.updateNPC( );
 	guy.playerUpdate(KB_UP,KB_LEFT,KB_RIGHT, pPulse, collEdge);
 	pPulse.updatePulse();
+	guy.updateBucket();
 
 	return true;
 }
@@ -96,12 +66,17 @@ void Draw()
 	//bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));
 	heart.drawNPC();
 	pPulse.drawPulse();
+	guy.drawBucket();
 	guy.drawPlayer();
+
 
 	if(guy.gameOver)
 		D.text(0,0,S+"GAME OVER!");
 
-	D.text(-1.6f,0.9f,S+Time.fps());
+	D.text(-1.6f,0.96f,S+"FPS: "+Time.fps());
+	D.text(1.5, 0.96f,S+"kiloFrames: "+Time.frame()/1000.0f);
+	D.text(0.0f, 0.96f,S+"Score: "+score);
+
 
 
 
