@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "dropArray.hpp"
 
 #ifndef WAVE_H
 #define WAVE_H
@@ -29,7 +30,7 @@ struct Pulse {
 	bool flatNext;
 	int waveCount;
 	
-	void updatePulse();
+	void updatePulse(dropArray & dArray);
 	void drawPulse();
 	void initPulse();
 	Flt calcAmp();

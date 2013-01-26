@@ -1,36 +1,23 @@
 #include "stdafx.h"
-#include "NPC.hpp"
+#include "drops.hpp"
 
 #ifndef DROPARRAY_H
 #define DROPARRAY_H
 
 struct dropArray {
 
-	NPC * dropArr;
+	drop * dropArr;
 	int numDrops;
+	bool newDrop;
+	int arrayCap;
+	int arrayCount;
+	int Stage;
+	bool dropCheck;
 
-	void initDropArray(int nDrops) {
-		numDrops = nDrops;
-		dropArr = new NPC[numDrops];
-
-		for(int i=0; i<numDrops; i++)
-			dropArr[i].initNPC(70,54);
-	}
-	void updateDropArray(int nDrops) {
-
-
-		for(int i=0; i<numDrops; i++)
-			dropArr[i].updateNPC();
-
-
-	}
-	void drawDrops() {
-
-		for(int i=0; i<numDrops; i++)
-			dropArr[i].drawNPC();
-
-	}
-}
+	void initDropArray(int nDrops, int stage);
+	void updateDropArray(int nDrops, int stage);
+	void drawDrops( void );
+};
 
 
 

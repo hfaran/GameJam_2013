@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "Wave.h"
+#include "dropArray.hpp"
 
 
 #ifndef NPC_HPP
@@ -19,10 +21,11 @@ struct NPC {
 
 	int numStages;
 	int Stage;
+	int nextFrame;
 
-	void initNPC( int pX, int pY, int nFrames, Flt animSpd );
+	void initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage );
 
-	void updateNPC( );
+	void updateNPC(Pulse & pPulse, dropArray & dArray);
 	void drawNPC( );
 };
 

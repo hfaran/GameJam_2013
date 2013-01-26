@@ -32,8 +32,6 @@ void Player::movePlayer( int moveType, Pulse & pPulse )
 	switch (moveType) {
 	case 1:
 		this->facingLeft = true;
-		if(this->x < (Flt) -RES_X/RES_Y)
-				gameOver = true;
 		if(noLeft == false) {
 			this->x -= Time.d()*this->movementSpeed;
 
@@ -86,9 +84,6 @@ void Player::handleJump(Pulse & pPulse)
 	if(jumping && jumpCount < jumpTime) { 
 		y += (jumpTime - jumpCount) * (jumpTime - jumpCount) * jumpSpeed; 
 		jumpCount++;
-	} else if(!jumping && jumpCount > 0 && !checkCollision(pPulse, collBox)) {
-		y -= (jumpTime + 1 - jumpCount) * (jumpTime + 1 - jumpCount) * jumpSpeed; 
-		jumpCount--;
 	} else if(jumping && jumpCount >= jumpTime) {
 		jumping = false;
 	} else if(!jumping && !checkCollision(pPulse, collBox)) {
@@ -134,6 +129,9 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Puls
 	collBox = Rect(this->x+(collBox.max.x - collBox.min.x) / 5.0f, this->y,this->x+2*this->pixelX/RES_Y - (collBox.max.x - collBox.min.x) / 5.0f, this->y+2*this->pixelY/RES_Y);
 	//Update animation frame
 	this->currentFrame = &this->frame[(int) this->frameCounter];
+
+	if(this->x < (Flt) -RES_X/RES_Y)
+			gameOver = true;
 }
 
 // Initializes all instance variables
