@@ -5,12 +5,13 @@
 void Player::drawPlayer( )
 {
 	// If Player if facing left, flip him, otherwise, draw him normally
-	currentFrame->draw(collBox);
+	currentFrame->draw(drawBox);
 }
 
 //1 = move left, 2 = move right, 3 = stop, 4 = jump
 void Player::movePlayer( int moveType )
 {
+
 	switch (moveType) {
 	case 1:
 		this->facingLeft = true;
@@ -57,14 +58,14 @@ void Player::movePlayer( int moveType )
 
 void Player::handleJump( )
 {
-	if(this->jumping && this->jumpCount < this->jumpTime) { 
-		this->y += (this->jumpTime - this->jumpCount) * (this->jumpTime - this->jumpCount) * this->jumpSpeed; 
-		this->jumpCount++;
-	} else if(!this->jumping && this->jumpCount > 0) {
-		this->y -= (this->jumpTime + 1 - this->jumpCount) * (this->jumpTime + 1 - this->jumpCount) * this->jumpSpeed; 
-		this->jumpCount--;
-	} else if(this->jumping && this->jumpCount >= this->jumpTime) {
-		this->jumping = false;
+	if(jumping && jumpCount < jumpTime) { 
+		y += (jumpTime - jumpCount) * (jumpTime - jumpCount) * jumpSpeed; 
+		jumpCount++;
+	} else if(!jumping && jumpCount > 0) {
+		y -= (jumpTime + 1 - jumpCount) * (jumpTime + 1 - jumpCount) * jumpSpeed; 
+		jumpCount--;
+	} else if(jumping && jumpCount >= jumpTime) {
+		jumping = false;
 	}
 }
 
@@ -91,12 +92,13 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 	handleInput( jump, left, right );
 	//Handle jumping if needed
 	handleJump( );
-	//Update the player collBox
+	//Update the player drawBox
 	if(this->facingLeft) {
-		collBox = Rect(this->x+2*this->pixelX/RES_Y, this->y, this->x, this->y+2*this->pixelY/RES_Y);
+		drawBox = Rect(this->x+2*this->pixelX/RES_Y, this->y, this->x, this->y+2*this->pixelY/RES_Y);
 	} else {
-		collBox = Rect(this->x, this->y,this->x+2*this->pixelX/RES_Y, this->y+2*this->pixelY/RES_Y);
+		drawBox = Rect(this->x, this->y,this->x+2*this->pixelX/RES_Y, this->y+2*this->pixelY/RES_Y);
 	}
+	collBox = Rect(this->x, this->y,this->x+2*this->pixelX/RES_Y, this->y+2*this->pixelY/RES_Y);
 	//Update animation frame
 	this->currentFrame = &this->frame[(int) this->frameCounter];
 }
@@ -105,7 +107,7 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime, int nFrames, Flt animSpd )
 {
 	this->x = -RES_X/RES_Y * 0.9f; //Start at the ~edge of the screen
-	this->y = -0.75f;		//Start on the top of the floor
+	this->y = -0.5f;		//Start on the top of the floor
 	this->jumping = false;
 	this->jumpCount = 0;
 	this->facingLeft = false;

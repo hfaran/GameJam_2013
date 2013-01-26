@@ -11,6 +11,7 @@ Player guy;
 Image bg;
 Flt diff;
 Pulse pPulse;
+bool coll;
 
 void InitPre()
 {
@@ -55,17 +56,26 @@ Bool Update()
 	guy.playerUpdate(KB_UP,KB_LEFT,KB_RIGHT);
 	pPulse.updatePulse();
 
+	coll = checkCollision(pPulse, guy.collBox);
+
 	return true;
 }
 
 void Draw()
 {
 	D.clear(BLACK);
-	guy.drawPlayer();
+	//bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));
 	pPulse.drawPulse();
+	guy.drawPlayer();
+	
 	D.text(-0.9f,0.9f,S+Time.fps());
 	D.text(0.9f,-0.9f,S+(int)guy.frameCounter);
 
-	// draw image
-	//bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));
+	if(coll)
+		D.text(0,0,S+"collision");
+	else
+		D.text(0,0,S+"nooooope");
+
+
+	
 }
