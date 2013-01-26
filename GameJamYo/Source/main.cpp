@@ -6,12 +6,11 @@
 #include "mathFunctions.h"
 #include "Wave.h"
 #include <iostream>
-#include <string>
-#include <sstream>
 
 Player guy;
 Image bg;
-Wave wavey;
+Flt diff;
+Pulse pPulse;
 
 void InitPre()
 {
@@ -24,7 +23,9 @@ Bool Init()
 {
 	bg.load("_Assets/ChipGame/gfx/lololol.gfx"); // load bg
 
-	wavey.initWave(-1.0f, 0.0f);
+	diff = 0.1f;
+
+	pPulse.initPulse();
 
 	return true;
 }
@@ -36,6 +37,9 @@ void Shut()
 Bool Update()
 {
 	if(Kb.bp(KB_ESC))return false;
+
+	pPulse.updatePulse();
+
 	return true;
 }
 
@@ -43,9 +47,8 @@ void Draw()
 {
 	D.clear(BLACK);
 
+	pPulse.drawPulse();
+
 	// draw image
 	//bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));
-
-	wavey.drawWave();
 }
-
