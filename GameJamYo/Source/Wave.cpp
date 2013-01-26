@@ -48,7 +48,7 @@ void Wave::drawWave( )
 {
 	for( int i=0; i<5; i++ ) {
 		this->beat[i].draw(RED);
-		this->beatCol[i].draw(GREEN);
+		//this->beatCol[i].draw(GREEN);
 	}
 }
 

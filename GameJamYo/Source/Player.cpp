@@ -8,7 +8,7 @@ void Player::drawPlayer( )
 {
 	// If Player if facing left, flip him, otherwise, draw him normally
 	currentFrame->draw(drawBox);
-	collBox.draw(BLUE);
+	//collBox.draw(BLUE);
 }
 
 //1 = move left, 2 = move right, 3 = stop, 4 = jump
