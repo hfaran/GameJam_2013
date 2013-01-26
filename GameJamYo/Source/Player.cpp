@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
-#include "main.h"
+#include "main.hpp"
 
 void Player::drawPlayer( )
 {

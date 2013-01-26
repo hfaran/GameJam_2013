@@ -1,21 +1,32 @@
 #include "stdafx.h"
+#include "Player.h"
 #include "main.hpp"
+#include "BackgroundLoader.h"
+#include "customPhysics.h"
+#include "mathFunctions.h"
+#include "Wave.h"
 #include <iostream>
 #include <string>
 #include <sstream>
 
-Image image; // image object
+Player guy;
+Image bg;
+Wave wavey;
 
 void InitPre()
 {
-   App.name("Image");
-   Paks.add("../data/engine.pak");
+	App.name("Image");
+	Paks.add("_Assets/engine.pak");
+	D.mode(RES_X,RES_Y);
 }
 
 Bool Init()
 {
-   image.load("../data/obj/particles/star.gfx"); // load image from file
-   return true;
+	bg.load("_Assets/ChipGame/gfx/lololol.gfx"); // load bg
+
+	wavey.initWave(-1.0f, 0.0f);
+
+	return true;
 }
 
 void Shut()
@@ -24,15 +35,17 @@ void Shut()
 
 Bool Update()
 {
-   if(Kb.bp(KB_ESC))return false;
-   return true;
+	if(Kb.bp(KB_ESC))return false;
+	return true;
 }
 
 void Draw()
 {
-   D.clear(BLACK);
+	D.clear(BLACK);
 
-   // draw image
-   image.draw(Rect(-0.5f, -0.5f, 0.5f, 0.5f)); // draw at given rectangle
+	// draw image
+	//bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));
+
+	wavey.drawWave();
 }
 

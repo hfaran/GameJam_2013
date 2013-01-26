@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "main.h"
+#include "main.hpp"
 
 #ifndef BACKGROUNDLOADER_H
 #define BACKGROUNDLOADER_H

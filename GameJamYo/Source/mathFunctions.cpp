@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "main.h"
+#include "main.hpp"
 #include "mathFunctions.h"
 
 
