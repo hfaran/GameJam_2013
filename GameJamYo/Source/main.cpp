@@ -90,13 +90,16 @@ Bool Update()
 
 void Draw()
 {
+	
+
 	D.clear(BLACK);
 	//bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));
 	heart.drawNPC();
 	pPulse.drawPulse();
 	guy.drawPlayer();
 
-
+	if(guy.gameOver)
+		D.text(0,0,S+"GAME OVER!");
 
 	D.text(-1.6f,0.9f,S+Time.fps());
 

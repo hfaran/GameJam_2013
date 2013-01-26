@@ -32,12 +32,13 @@ void Player::movePlayer( int moveType, Pulse & pPulse )
 	switch (moveType) {
 	case 1:
 		this->facingLeft = true;
+		if(this->x < (Flt) -RES_X/RES_Y)
+				gameOver = true;
 		if(noLeft == false) {
 			this->x -= Time.d()*this->movementSpeed;
 
 			//If trying to move off-screen, stop him
-			if(this->x < (Flt) -RES_X/RES_Y)
-				this->x = (Flt) -RES_X/RES_Y;
+			
 
 			//Animation
 			if(this->frameCounter<(this->numFrames-1))
@@ -151,6 +152,7 @@ void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime,
 	this->numFrames = nFrames;
 	this->frame = new Image [numFrames];
 	this->animSpeed = animSpd;
+	this->gameOver = false;
 }
 
 

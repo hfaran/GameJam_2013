@@ -34,9 +34,11 @@ int checkCollisionEdge(Pulse &p, Rect collisionBox)
 	{
 		for(int j=0; j<5; j++)
 		{
+			if(p.waveys[i].amplitude!=0.0f) {
+			
 			coll = Cuts(p.waveys[i].beat[j], collisionBox);
 			if(coll)
-				return j;
+				return j; }
 		}
 	}
 	return -1;

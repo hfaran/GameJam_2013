@@ -89,7 +89,7 @@ void Pulse::updatePulse() {
 void Pulse::drawPulse() {
 	for(int i=0;i<waveCount;i++){
 		waveys[i].drawWave();
-		D.text(waveys[i].xPos, 0.5f, S+i);
+		//D.text(waveys[i].xPos, 0.5f, S+i);
 	}
 }
 
@@ -97,6 +97,7 @@ void Pulse::initPulse() {
 	flatNext = false;
 	waveCount = RES_X / RES_Y * 2 / Tt + 3;
 	pSpeed = PULSE_SPEED;
+	waveType = false;
 
 	for(int i=0;i<waveCount;i++){
 		waveys[i].initWave(-RES_X / RES_Y + Tt * i, Tt, 0.0f);
@@ -105,5 +106,10 @@ void Pulse::initPulse() {
 }
 
 Flt Pulse::calcAmp() {
-	return 0.3f;
+	waveType = !waveType;
+	if(waveType)
+		return 0.3f;
+	else
+		return 0.0f;
+		
 }

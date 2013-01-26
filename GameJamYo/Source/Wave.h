@@ -17,6 +17,8 @@ struct Wave {
 	void updateWave();
 	void copyWave(Wave & waveA);
 	void drawWave();
+
+	
 };
 
 
@@ -31,6 +33,8 @@ struct Pulse {
 	void drawPulse();
 	void initPulse();
 	Flt calcAmp();
+
+	bool waveType;
 };
 
 
