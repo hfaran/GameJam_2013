@@ -33,14 +33,14 @@ Bool Init()
 {
 	bg.load("_Assets/HeartGame/gfx/background00.gfx"); // load bg
 
-	guy.initPlayer(53,106,0.9f,.0001,20,11,1.0/10.0);
+	guy.initPlayer(53,106,1.2f,.0001,20,11,1.0/10.0);
 	heart.initNPC(1524,700,38,0.1f, stage);
 	guy.initBucket(43,25);
 
 	diff = 0.1f;
 	speed = .02f;
-	pPulse.initPulse();
 	pPulse.pSpeed = speed;
+	pPulse.initPulse();
 	drops.initDropArray(500, stage);
 
 	return true;
