@@ -28,6 +28,7 @@ BackgroundLoader eLogo;
 Flt RES_Y =  768.0f;
 Flt RES_X =  1366.0f;
 int origScore;
+int forceRes;
 
 int movementSpeed;
 
@@ -42,8 +43,12 @@ void InitPre()
 	FILE* f = fopen("settings.ini", "r");
 	fscanf(f, "%f", &RES_X);
 	fscanf(f, "%f", &RES_Y);
-	RES_Y = 9.0/16.0*RES_X;
 	fscanf(f, "%d", &origScore);
+	fscanf(f, "%d", &forceRes);
+
+	if(forceRes == 1)
+		RES_Y = 9.0/16.0*RES_X;
+
 	fclose(f);
 
 	D.mode(RES_X,RES_Y);
@@ -51,7 +56,7 @@ void InitPre()
 
 Bool Init()
 {
-	
+
 
 	bg.load("HeartGame/gfx/background00.gfx"); // load bg
 	guy.initPlayer(53,106,1.2f,.0001,20,12,1.0/10.0);
@@ -149,8 +154,12 @@ void Draw()
 		fprintf(f, "%f\n", RES_Y);
 		if(finalScore >= origScore) {
 			fprintf(f, "%d\n", finalScore);
-			//D.text(endGameTs,0.0f, 0.3f,S+"YOU BEAT YOUR HIGH SCORE!"+"origScore: "+origScore);
+			D.text(endGameTs,0.0f, 0.3f,S+"YOU BEAT YOUR HIGH SCORE!");
 		}
+		else
+			fprintf(f, "%d\n", origScore);
+		fprintf(f, "%d\n", forceRes);
+
 		fclose(f);
 
 	} else {
