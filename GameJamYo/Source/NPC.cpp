@@ -60,6 +60,8 @@ void NPC::initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage )
 	this->frame[35].load("_Assets/HeartGame/gfx/beatET01.gfx");
 	this->frame[36].load("_Assets/HeartGame/gfx/beatET02.gfx");
 	this->frame[37].load("_Assets/HeartGame/gfx/beatET01.gfx");
+
+	
 }
 
 void NPC::updateNPC( Pulse & pPulse, dropArray & dArray, int stage )
@@ -83,8 +85,12 @@ void NPC::updateNPC( Pulse & pPulse, dropArray & dArray, int stage )
 			nextFrame = 1;
 		} else if(pPulse.waveys[pPulse.waveCount-3].xPos+pPulse.waveys[pPulse.waveCount-3].t/2.0f < RES_X/RES_Y){
 			nextFrame = 2;
+			beat[1].speed(1.0f);
+			beat[1].play("_Assets/HeartGame/sound/Beat1.Ogg");
 		} else if(pPulse.waveys[pPulse.waveCount-3].xPos < RES_X/RES_Y){
 			nextFrame = 1;
+			beat[0].speed(1.0f);
+			beat[0].play("_Assets/HeartGame/sound/Beat0.Ogg");
 		}
 
 		frameCounter = nextFrame;

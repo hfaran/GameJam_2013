@@ -24,6 +24,8 @@ struct NPC {
 	int Stage;
 	int nextFrame;
 
+	Sound beat[2];
+
 	void initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage );
 
 	void updateNPC(Pulse & pPulse, dropArray & dArray, int stage);

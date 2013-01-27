@@ -22,6 +22,8 @@ NPC heart;
 dropArray drops;
 Flt speed;
 
+Sound BGM;
+
 void InitPre()
 {
 	App.name("Image");
@@ -76,7 +78,7 @@ Bool Update()
 			speed += stage / 40.0f / 10000.0f;
 		}
 	case 5:
-			speed += stage / 40.0f / 10000.0f;
+		speed += stage / 40.0f / 10000.0f;
 		break;
 	}
 	pPulse.pSpeed = speed;
@@ -90,6 +92,11 @@ Bool Update()
 
 	guy.updateBucket();
 	drops.updateDropArray(500, stage, score);
+
+	BGM.speed(50.0f*speed);
+	BGM.volume(0.1f);
+	if(!BGM.playing())
+		BGM.play("_Assets/HeartGame/sound/Emergency Room - OST.ogg", true);
 
 	return true;
 }
