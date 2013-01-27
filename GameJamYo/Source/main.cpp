@@ -17,6 +17,7 @@ Flt diff;
 Pulse pPulse;
 bool coll;
 bool theEnd = false;
+bool theEndS = false;
 int collEdge;
 int score=0;
 int stage=0;
@@ -30,7 +31,7 @@ Flt RES_X =  1366.0f;
 int origScore;
 int forceRes;
 
-float movementSpeed=1.0f;//set from ini //1.0f
+float movementSpeedd=1.0f;//set from ini //1.0f
 int JUMPTIME=20;//set from ini 
 float JUMPSPEED=0.0001;//set from ini//0.0001
 int characterID=0;//set from ini
@@ -43,6 +44,7 @@ Flt speed;
 float dropVelocity = 0.005f;//set from ini
 
 Sound BGM;
+Sound over;
 
 void InitPre()
 {
@@ -55,10 +57,9 @@ void InitPre()
 	fscanf(f, "%f", &RES_Y);
 	fscanf(f, "%d", &origScore);
 	fscanf(f, "%d", &forceRes);
-	fscanf(f, "%f", &movementSpeed);
+	fscanf(f, "%f", &movementSpeedd);
 	fscanf(f, "%f", &JUMPSPEED);
 	fscanf(f, "%d", &JUMPTIME);
-	
 	fscanf(f, "%d", &characterID);
 	fscanf(f, "%f", &startSpeed);
 	fscanf(f, "%f", &stageTime);
@@ -77,7 +78,7 @@ Bool Init()
 
 
 	bg.load("HeartGame/gfx/background00.gfx"); // load bg
-	guy.initPlayer(53,106,movementSpeed,JUMPSPEED,JUMPTIME,11,1.0/10.0,characterID);
+	guy.initPlayer(53,106,1.0f,.0001f,20,11,1.0/10.0,characterID);
 	heart.initNPC(1524,700,46,0.1f, stage);
 	guy.initBucket(43,25);
 
@@ -102,7 +103,11 @@ Bool Update()
 {
 	if(Kb.bp(KB_ESC))return false;
 	if(theEnd) { 
-
+		BGM.stop();
+		if(!theEndS){
+			over.play("HeartGame/sound/flatLine.ogg", false);
+			theEndS = true;
+		}
 	} else {
 		switch (stage) {
 
@@ -110,8 +115,6 @@ Bool Update()
 			if(Round(Time.frame()/60.0f) >= 2) {
 				stage++;
 				stageCount = 0;
-			} else {
-				//speed += stage / 40.0f / 10000.0f;
 			}
 			break;
 
@@ -119,33 +122,22 @@ Bool Update()
 			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime) {
 				stage++;
 				stageCount = 0;
-			} else {
-				//speed += stage / 40.0f / 10000.0f;
 			}
 		case 2:
 			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 3.0) {
 				stage++;
 				stageCount = 0;
-			} else {
-				//speed += stage / 40.0f / 10000.0f;
 			}
 		case 3:
 			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 7.0) {
 				stage++;
 				stageCount = 0;
-			} else {
-				//speed += stage / 40.0f / 10000.0f;
 			}
 		case 4:
 			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 15.0) {
 				stage++;
 				stageCount = 0;
-			} else {
-				//speed += stage / 40.0f / 10000.0f;
 			}
-		case 5:
-			//speed += stage / 40.0f / 10000.0f;
-			break;
 		}
 		speed = startSpeed+stage/500.0f+stageCount/750000.0f;
 		pPulse.pSpeed = speed;
@@ -200,9 +192,9 @@ void Draw()
 			fprintf(f, "%d\n", origScore);
 
 		fprintf(f, "%d\n", forceRes);
-		fprintf(f, "%f\n", movementSpeed);
-		fprintf(f, "%d\n", JUMPTIME);
+		fprintf(f, "%f\n", movementSpeedd);
 		fprintf(f, "%f\n", JUMPSPEED);
+		fprintf(f, "%d\n", JUMPTIME);
 		fprintf(f, "%d\n", characterID);
 		fprintf(f, "%f\n", startSpeed);
 		fprintf(f, "%f\n", stageTime);

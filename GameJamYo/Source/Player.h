@@ -53,6 +53,7 @@ struct Player {
 	void movePlayer( int moveType, Pulse & pPulse  ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
 	void handleJump( Pulse & pPulse );
 	void drawPlayer(  );
+	void changeChar( int charrID );
 };
 
 
