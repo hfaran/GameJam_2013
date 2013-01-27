@@ -99,13 +99,13 @@ void Player::handleJump(Pulse & pPulse)
 void Player::handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Pulse & pPulse )
 {
 	//Call movePlayer to handle movement based on given input
-	if(Kb.b(jump) && this->jumpCount == 0) {
+	if((Kb.b(jump) || Kb.b(KB_W) || Kb.b(KB_SPACE)) && this->jumpCount == 0) {
 		movePlayer(4, pPulse);
 	}
-	else if(Kb.b(left)) {
+	else if(Kb.b(left) || Kb.b(KB_A)) {
 		movePlayer(1, pPulse);
 	}
-	else if(Kb.b(right)) {
+	else if(Kb.b(right) || Kb.b(KB_D)) {
 		movePlayer(2, pPulse);
 	}
 	else {
