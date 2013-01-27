@@ -24,11 +24,11 @@ struct NPC {
 	int Stage;
 	int nextFrame;
 
-	Sound beat[2];
+	Sound beat;
 
 	void initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage );
 
-	void updateNPC(Pulse & pPulse, dropArray & dArray, int stage);
+	void updateNPC(Pulse & pPulse, dropArray & dArray, int stage, bool & theEnd);
 	void drawNPC( );
 };
 

@@ -68,8 +68,6 @@ void Wave::copyWave(Wave & waveB) {
 
 void Pulse::updatePulse(dropArray & dArray, int stage) {
 
-	waveys[0].xPos -= pSpeed;
-
 	if(waveys[0].xPos + Tt < -RES_X / RES_Y) {
 		for(int i=0;i<waveCount-1;i++){
 			waveys[i].copyWave(waveys[i+1]);
@@ -80,7 +78,7 @@ void Pulse::updatePulse(dropArray & dArray, int stage) {
 		dArray.newDrop = true;
 		waveys[waveCount-1].initWave(-RES_X / RES_Y + Tt * (waveCount - 1), Tt, calcAmp(stage));
 	} else {
-		for(int i=1;i<waveCount;i++){
+		for(int i=0;i<waveCount;i++){
 			waveys[i].xPos -= pSpeed;
 		}
 	}

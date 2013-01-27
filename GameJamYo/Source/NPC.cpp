@@ -21,6 +21,7 @@ void NPC::initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage )
 
 	this->transitionFrameCounter=18;
 
+
 	this->frame[0].load("_Assets/HeartGame/gfx/beatA00.gfx");
 	this->frame[1].load("_Assets/HeartGame/gfx/beatA01.gfx");
 	this->frame[2].load("_Assets/HeartGame/gfx/beatA02.gfx");
@@ -60,13 +61,32 @@ void NPC::initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage )
 	this->frame[35].load("_Assets/HeartGame/gfx/beatET01.gfx");
 	this->frame[36].load("_Assets/HeartGame/gfx/beatET02.gfx");
 	this->frame[37].load("_Assets/HeartGame/gfx/beatET01.gfx");
+	this->frame[38].load("_Assets/HeartGame/gfx/beatFT00.gfx");
+	this->frame[39].load("_Assets/HeartGame/gfx/beatFT01.gfx");
+	this->frame[40].load("_Assets/HeartGame/gfx/beatFT02.gfx");
+	this->frame[41].load("_Assets/HeartGame/gfx/beatFT03.gfx");
+	this->frame[42].load("_Assets/HeartGame/gfx/beatFT04.gfx");
+	this->frame[43].load("_Assets/HeartGame/gfx/beatFT05.gfx");
+	this->frame[44].load("_Assets/HeartGame/gfx/beatFT06.gfx");
+	this->frame[45].load("_Assets/HeartGame/gfx/beatFT06.gfx");
 
 	
 }
 
-void NPC::updateNPC( Pulse & pPulse, dropArray & dArray, int stage )
+void NPC::updateNPC( Pulse & pPulse, dropArray & dArray, int stage, bool & theEnd )
 {
-	if(stage > Stage)
+	if(stage == 6)
+	{
+			if(this->transitionFrameCounter<45)
+				this->transitionFrameCounter += animSpeed;
+			else {
+				//this->transitionFrameCounter=0;
+				theEnd = true;
+				Stage = stage;
+			}
+			this->currentFrame = &this->frame[(int) this->transitionFrameCounter];
+	}
+	else if(stage > Stage)
 	{
 			if(this->transitionFrameCounter<18+(Stage)*4)
 				this->transitionFrameCounter += animSpeed;
@@ -85,12 +105,10 @@ void NPC::updateNPC( Pulse & pPulse, dropArray & dArray, int stage )
 			nextFrame = 1;
 		} else if(pPulse.waveys[pPulse.waveCount-3].xPos+pPulse.waveys[pPulse.waveCount-3].t/2.0f < RES_X/RES_Y){
 			nextFrame = 2;
-			beat[1].speed(1.0f);
-			beat[1].play("_Assets/HeartGame/sound/Beat1.Ogg");
 		} else if(pPulse.waveys[pPulse.waveCount-3].xPos < RES_X/RES_Y){
 			nextFrame = 1;
-			beat[0].speed(1.0f);
-			beat[0].play("_Assets/HeartGame/sound/Beat0.Ogg");
+			beat.speed(pPulse.pSpeed*50.0f);
+			beat.play("_Assets/HeartGame/sound/Beat.ogg");
 		}
 
 		frameCounter = nextFrame;
