@@ -9,6 +9,7 @@
 #include "NPC.hpp"
 #include <iostream>
 #include <cmath>
+#include <iostream>
 
 Player guy;
 Image bg;
@@ -26,6 +27,9 @@ Flt speed;
 BackgroundLoader eLogo;
 Flt RES_Y =  768.0f;
 Flt RES_X =  1366.0f;
+int origScore;
+
+int movementSpeed;
 
 Sound BGM;
 
@@ -34,11 +38,21 @@ void InitPre()
 	App.name("Image");
 	Paks.add("_Assets.pak");
 	Paks.add("engine.pak");
+
+	FILE* f = fopen("settings.ini", "r");
+	fscanf(f, "%f", &RES_X);
+	fscanf(f, "%f", &RES_Y);
+	RES_Y = 9.0/16.0*RES_X;
+	fscanf(f, "%d", &origScore);
+	fclose(f);
+
 	D.mode(RES_X,RES_Y);
 }
 
 Bool Init()
 {
+	
+
 	bg.load("HeartGame/gfx/background00.gfx"); // load bg
 	guy.initPlayer(53,106,1.2f,.0001,20,12,1.0/10.0);
 	heart.initNPC(1524,700,46,0.1f, stage);
@@ -109,7 +123,7 @@ Bool Update()
 			BGM.volume(0.1f);
 		}
 
-		if(guy.gameOver || score <= -100)
+		if(guy.gameOver || score <= -50)
 			stage = 6;
 	}
 	return true;
@@ -126,6 +140,18 @@ void Draw()
 		endGameTs.color = BLACK;
 		endGameTs.scale*=1.5f;
 		D.text(endGameTs,0.0f, 0.05f,S+"Total Score: "+(time + score));
+		D.text(endGameTs,0.0f, -0.05f,S+"Press ESC to try again");
+
+		int finalScore = time + score;
+
+		FILE* f = fopen("settings.ini", "w");
+		fprintf(f, "%f\n", RES_X);
+		fprintf(f, "%f\n", RES_Y);
+		if(finalScore >= origScore) {
+			fprintf(f, "%d\n", finalScore);
+			//D.text(endGameTs,0.0f, 0.3f,S+"YOU BEAT YOUR HIGH SCORE!"+"origScore: "+origScore);
+		}
+		fclose(f);
 
 	} else {
 		D.clear(BLACK);
