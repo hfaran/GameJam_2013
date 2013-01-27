@@ -47,7 +47,7 @@ struct Player {
 
 
 	void initPlayer( int pX, int pY, float moveSpeed=1.0f, 
-		Flt jSpeed=0.0001f, int jTime=25, int nFrames=10, Flt animSpd=0.3333 );
+		Flt jSpeed=0.0001f, int jTime=25, int nFrames=10, Flt animSpd=0.3333, int charID=0 );
 	void handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Pulse & pPulse );
 	void playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Pulse & pPulse, int collEdg );
 	void movePlayer( int moveType, Pulse & pPulse  ); //1 = move left, 2 = move right, 3 = stop, 4 = jump

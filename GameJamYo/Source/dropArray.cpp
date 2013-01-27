@@ -13,7 +13,7 @@ void dropArray::initDropArray(int nDrops, int stage) {
 	dropCheck = false;
 }
 
-void dropArray::updateDropArray(int nDrops, int stage, int & score) {
+void dropArray::updateDropArray(int nDrops, int stage, int & score, float speedOfDrops) {
 	Stage = stage;
 	if(newDrop && dropCheck && stage != 0) {
 		dropArr[arrayCount].initDrop(rand() % (stage)+1,rand() % 2);
@@ -25,7 +25,7 @@ void dropArray::updateDropArray(int nDrops, int stage, int & score) {
 		dropCheck = true;
 	}
 	for(int j=0; j<arrayCount; j++) {
-		dropArr[j].updateDrop();
+		dropArr[j].updateDrop(speedOfDrops);
 		if(dropArr[j].y < -1.2f) {
 			for(int i=j; i<arrayCount; i++)
 			{

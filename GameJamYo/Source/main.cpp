@@ -23,14 +23,24 @@ int stage=0;
 NPC heart;
 dropArray drops;
 int time;
-Flt speed;
+
 BackgroundLoader eLogo;
 Flt RES_Y =  768.0f;
 Flt RES_X =  1366.0f;
 int origScore;
 int forceRes;
 
-int movementSpeed;
+float movementSpeed;//set from ini //1.0f
+int JUMPTIME;//set from ini //0.0001
+float JUMPSPEED;//set from ini //20
+int characterID;//set from ini
+
+
+const float startSpeed = 0.01f;	//set from ini
+int stageCount=0;
+int stageTime = 20.0f; //set from ini
+Flt speed;
+float dropVelocity = 0.005f;//set from ini
 
 Sound BGM;
 
@@ -59,7 +69,7 @@ Bool Init()
 
 
 	bg.load("HeartGame/gfx/background00.gfx"); // load bg
-	guy.initPlayer(53,106,1.2f,.0001,20,12,1.0/10.0);
+	guy.initPlayer(53,106,movementSpeed,JUMPTIME,JUMPSPEED,11,1.0/10.0,characterID);
 	heart.initNPC(1524,700,46,0.1f, stage);
 	guy.initBucket(43,25);
 
@@ -91,27 +101,47 @@ Bool Update()
 		case 0:
 			if(Round(Time.frame()/60.0f) >= 2) {
 				stage++;
-				speed = .02f;
+				stageCount = 0;
 			} else {
-				speed += stage / 40.0f / 10000.0f;
+				//speed += stage / 40.0f / 10000.0f;
 			}
 			break;
 
 		case 1:
-		case 2:
-		case 3:
-		case 4:
-			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >= stage * 60.0f) {
+			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime) {
 				stage++;
-				speed = .02f;
+				stageCount = 0;
 			} else {
-				speed += stage / 40.0f / 10000.0f;
+				//speed += stage / 40.0f / 10000.0f;
+			}
+		case 2:
+			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 3) {
+				stage++;
+				stageCount = 0;
+			} else {
+				//speed += stage / 40.0f / 10000.0f;
+			}
+		case 3:
+			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 7) {
+				stage++;
+				stageCount = 0;
+			} else {
+				//speed += stage / 40.0f / 10000.0f;
+			}
+		case 4:
+			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 15) {
+				stage++;
+				stageCount = 0;
+			} else {
+				//speed += stage / 40.0f / 10000.0f;
 			}
 		case 5:
-			speed += stage / 40.0f / 10000.0f;
+			//speed += stage / 40.0f / 10000.0f;
 			break;
 		}
+		speed = startSpeed+stage/500.0f+stageCount/750000.0f;
 		pPulse.pSpeed = speed;
+		stageCount++;
 
 		collEdge = checkCollisionEdge(pPulse,guy.collBox);
 		score += checkDropsCollision(drops, guy.b_collBox);
@@ -121,7 +151,7 @@ Bool Update()
 		heart.updateNPC(pPulse, drops, stage, theEnd);
 
 		guy.updateBucket();
-		drops.updateDropArray(500, stage, score);
+		drops.updateDropArray(500, stage, score, dropVelocity);
 
 		if(!BGM.playing()) {
 			BGM.play("HeartGame/sound/Emergency Room - OST.ogg", true);
@@ -145,7 +175,7 @@ void Draw()
 		endGameTs.color = BLACK;
 		endGameTs.scale*=1.5f;
 		D.text(endGameTs,0.0f, 0.05f,S+"Total Score: "+(time + score));
-		D.text(endGameTs,0.0f, -0.05f,S+"Press ESC to try again");
+		D.text(endGameTs,0.0f, -0.05f,S+"Press ESC to return to Launcher");
 
 		int finalScore = time + score;
 

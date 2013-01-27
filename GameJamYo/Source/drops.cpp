@@ -98,26 +98,26 @@ void drop::initDrop( int pNum, bool type,  Flt _x, Flt _y) {
 	
 }
 
-void drop::updateDrop(){
+void drop::updateDrop(float speedOfDrops){
 	switch (pathNum) {
 
 	case 1:
-		y -= 0.01f;
+		y -= speedOfDrops;
 		x = - sqrt(orgY-y)-4*pixelX/RES_Y;
 		break;
 	case 2:
-		y -= 0.01f;
+		y -= speedOfDrops;
 		x = sqrt(orgY-y)+5*pixelX/RES_Y;
 		break;
 	case 3:
-		y -= 0.01f;
+		y -= speedOfDrops;
 		x = - sqrt(orgY-y)-4*pixelX/RES_Y;
 		break;
 	case 4:
-		y -= 0.01f;
+		y -= speedOfDrops;
 		break;
 	case 5:
-		y -= 0.02f;
+		y -= speedOfDrops*2;
 		break;
 	}
 

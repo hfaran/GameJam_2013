@@ -72,7 +72,6 @@ void Player::movePlayer( int moveType, Pulse & pPulse )
 	case 4:
 		// Set jumping and let handleJump take care of the rest
 		if(checkCollision(pPulse, collBox)) 
-			this->currentFrame = &this->frame[11];
 			this->jumping = true;
 		break;
 	}
@@ -135,7 +134,7 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Puls
 }
 
 // Initializes all instance variables
-void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime, int nFrames, Flt animSpd )
+void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime, int nFrames, Flt animSpd, int charID )
 {
 	this->x = -RES_X/RES_Y * 0.9f; //Start at the ~edge of the screen
 	this->y = -0.1f;		//Start on the top of the floor
@@ -163,7 +162,6 @@ void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime,
 	this->frame[8].load("HeartGame/gfx/mofo01.gfx");
 	this->frame[9].load("HeartGame/gfx/mofo00.gfx");
 	this->frame[10].load("HeartGame/gfx/mofo00.gfx");
-	this->frame[11].load("HeartGame/gfx/mofo02.gfx");
 }
 
 
