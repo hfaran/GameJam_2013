@@ -184,7 +184,7 @@ void Draw()
 		fprintf(f, "%f\n", RES_X);
 		fprintf(f, "%f\n", RES_Y);
 
-		if(finalScore >= origScore) {
+		if(finalScore > origScore) {
 			fprintf(f, "%d\n", finalScore);
 			D.text(endGameTs,0.0f, 0.3f,S+"YOU BEAT YOUR HIGH SCORE!");
 		}
