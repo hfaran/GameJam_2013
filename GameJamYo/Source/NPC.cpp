@@ -60,17 +60,13 @@ void NPC::initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage )
 	this->frame[35].load("_Assets/HeartGame/gfx/beatET01.gfx");
 	this->frame[36].load("_Assets/HeartGame/gfx/beatET02.gfx");
 	this->frame[37].load("_Assets/HeartGame/gfx/beatET01.gfx");
-	this->frame[38].load("_Assets/HeartGame/gfx/beatFT00.gfx");
-	this->frame[39].load("_Assets/HeartGame/gfx/beatFT01.gfx");
-	this->frame[40].load("_Assets/HeartGame/gfx/beatFT02.gfx");
-	this->frame[41].load("_Assets/HeartGame/gfx/beatFT01.gfx");
 }
 
 void NPC::updateNPC( Pulse & pPulse, dropArray & dArray, int stage )
 {
 	if(stage > Stage)
 	{
-			if(this->transitionFrameCounter<18+(Stage+1)*4)
+			if(this->transitionFrameCounter<18+(Stage)*4)
 				this->transitionFrameCounter += animSpeed;
 			else {
 				//this->transitionFrameCounter=0;

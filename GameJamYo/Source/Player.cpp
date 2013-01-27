@@ -130,7 +130,7 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Puls
 	//Update animation frame
 	this->currentFrame = &this->frame[(int) this->frameCounter];
 
-	if(this->x < (Flt) -RES_X/RES_Y)
+	if(this->x < (Flt) -RES_X/RES_Y - 0.15f)
 			gameOver = true;
 }
 

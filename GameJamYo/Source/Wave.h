@@ -30,10 +30,10 @@ struct Pulse {
 	bool flatNext;
 	int waveCount;
 	
-	void updatePulse(dropArray & dArray);
+	void updatePulse(dropArray & dArray, int stage);
 	void drawPulse();
 	void initPulse();
-	Flt calcAmp();
+	Flt calcAmp(int stage);
 
 	bool waveType;
 };

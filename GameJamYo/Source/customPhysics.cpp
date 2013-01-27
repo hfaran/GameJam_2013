@@ -62,6 +62,6 @@ int checkDropsCollision(dropArray & dArray, Rect bucketBox)
 				return 1;
 			}
 		
-	}
+		}
 		return 0;
 }

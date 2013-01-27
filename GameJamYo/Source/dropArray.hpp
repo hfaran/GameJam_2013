@@ -15,7 +15,7 @@ struct dropArray {
 	bool dropCheck;
 
 	void initDropArray(int nDrops, int stage);
-	void updateDropArray(int nDrops, int stage);
+	void updateDropArray(int nDrops, int stage, int & score);
 	void drawDrops( void );
 	
 };

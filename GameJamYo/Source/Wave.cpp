@@ -2,6 +2,8 @@
 #include "main.hpp"
 #include "Wave.h"
 #include "mathFunctions.h"
+#include <cstdlib>
+#include <cmath>
 
 #define Tt 0.5f
 #define PULSE_SPEED .005f
@@ -47,12 +49,7 @@ void Wave::updateWave()
 void Wave::drawWave( )
 {
 	for( int i=0; i<5; i++ ) {
-		this->beat[i].draw(ColorAlpha(RED, 0.1), 0.030f);
-		this->beat[i].draw(ColorAlpha(RED, 0.2), 0.025f);
-		this->beat[i].draw(ColorAlpha(RED, 0.3), 0.020f);
-		this->beat[i].draw(ColorAlpha(RED, 0.4), 0.015f);
-		this->beat[i].draw(ColorAlpha(RED, 0.5), 0.010f);
-		this->beat[i].draw(RED, 0.005f);
+		this->beat[i].draw(RED, 0.015f);
 		//this->beatCol[i].draw(GREEN);
 	}
 }
@@ -69,7 +66,7 @@ void Wave::copyWave(Wave & waveB) {
 	this->xPos = waveB.xPos;
 }
 
-void Pulse::updatePulse(dropArray & dArray) {
+void Pulse::updatePulse(dropArray & dArray, int stage) {
 
 	waveys[0].xPos -= pSpeed;
 
@@ -81,7 +78,7 @@ void Pulse::updatePulse(dropArray & dArray) {
 			waveys[i].xPos -= pSpeed;
 		}
 		dArray.newDrop = true;
-		waveys[waveCount-1].initWave(-RES_X / RES_Y + Tt * (waveCount - 1), Tt, calcAmp());
+		waveys[waveCount-1].initWave(-RES_X / RES_Y + Tt * (waveCount - 1), Tt, calcAmp(stage));
 	} else {
 		for(int i=1;i<waveCount;i++){
 			waveys[i].xPos -= pSpeed;
@@ -111,10 +108,10 @@ void Pulse::initPulse() {
 
 }
 
-Flt Pulse::calcAmp() {
+Flt Pulse::calcAmp(int stage) {
 	waveType = !waveType;
 	if(waveType)
-		return 0.3f;
+		return 0.15f * sqrt((double) stage);
 	else
 		return 0.0f;
 		

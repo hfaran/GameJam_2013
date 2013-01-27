@@ -22,6 +22,7 @@ struct drop {
 
 
 	void initDrop( int pNum, bool type);
+	void initDrop( int pNum, bool type, Flt _x, Flt _y);
 	void updateDrop();
 	void drawDrop();
 	void copyDrop(drop & d);
