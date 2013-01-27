@@ -30,10 +30,10 @@ Flt RES_X =  1366.0f;
 int origScore;
 int forceRes;
 
-float movementSpeed;//set from ini //1.0f
-int JUMPTIME;//set from ini //0.0001
-float JUMPSPEED;//set from ini //20
-int characterID;//set from ini
+float movementSpeed=1.0f;//set from ini //1.0f
+int JUMPTIME=20;//set from ini 
+float JUMPSPEED=0.0001;//set from ini//0.0001
+int characterID=0;//set from ini
 
 
 float startSpeed = 0.01f;	//set from ini
@@ -56,8 +56,9 @@ void InitPre()
 	fscanf(f, "%d", &origScore);
 	fscanf(f, "%d", &forceRes);
 	fscanf(f, "%f", &movementSpeed);
-	fscanf(f, "%d", &JUMPTIME);
 	fscanf(f, "%f", &JUMPSPEED);
+	fscanf(f, "%d", &JUMPTIME);
+	
 	fscanf(f, "%d", &characterID);
 	fscanf(f, "%f", &startSpeed);
 	fscanf(f, "%f", &stageTime);
@@ -76,7 +77,7 @@ Bool Init()
 
 
 	bg.load("HeartGame/gfx/background00.gfx"); // load bg
-	guy.initPlayer(53,106,movementSpeed,JUMPTIME,JUMPSPEED,11,1.0/10.0,characterID);
+	guy.initPlayer(53,106,movementSpeed,JUMPSPEED,JUMPTIME,11,1.0/10.0,characterID);
 	heart.initNPC(1524,700,46,0.1f, stage);
 	guy.initBucket(43,25);
 
@@ -122,21 +123,21 @@ Bool Update()
 				//speed += stage / 40.0f / 10000.0f;
 			}
 		case 2:
-			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 3) {
+			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 3.0) {
 				stage++;
 				stageCount = 0;
 			} else {
 				//speed += stage / 40.0f / 10000.0f;
 			}
 		case 3:
-			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 7) {
+			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 7.0) {
 				stage++;
 				stageCount = 0;
 			} else {
 				//speed += stage / 40.0f / 10000.0f;
 			}
 		case 4:
-			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 15) {
+			if(score <= - 1 * pow(3.14, (stage)) || Round(Time.frame()/60.0f) >=  stageTime * 15.0) {
 				stage++;
 				stageCount = 0;
 			} else {
