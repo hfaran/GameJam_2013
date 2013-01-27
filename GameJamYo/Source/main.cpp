@@ -36,9 +36,9 @@ float JUMPSPEED;//set from ini //20
 int characterID;//set from ini
 
 
-const float startSpeed = 0.01f;	//set from ini
+float startSpeed = 0.01f;	//set from ini
 int stageCount=0;
-int stageTime = 20.0f; //set from ini
+float stageTime = 20.0f; //set from ini
 Flt speed;
 float dropVelocity = 0.005f;//set from ini
 
@@ -55,6 +55,13 @@ void InitPre()
 	fscanf(f, "%f", &RES_Y);
 	fscanf(f, "%d", &origScore);
 	fscanf(f, "%d", &forceRes);
+	fscanf(f, "%f", &movementSpeed);
+	fscanf(f, "%d", &JUMPTIME);
+	fscanf(f, "%f", &JUMPSPEED);
+	fscanf(f, "%d", &characterID);
+	fscanf(f, "%f", &startSpeed);
+	fscanf(f, "%f", &stageTime);
+	fscanf(f, "%f", &dropVelocity);
 
 	if(forceRes == 1)
 		RES_Y = 9.0/16.0*RES_X;
@@ -179,18 +186,29 @@ void Draw()
 
 		int finalScore = time + score;
 
+//***Write ini
 		FILE* f = fopen("settings.ini", "w");
 		fprintf(f, "%f\n", RES_X);
 		fprintf(f, "%f\n", RES_Y);
+
 		if(finalScore >= origScore) {
 			fprintf(f, "%d\n", finalScore);
 			D.text(endGameTs,0.0f, 0.3f,S+"YOU BEAT YOUR HIGH SCORE!");
 		}
 		else
 			fprintf(f, "%d\n", origScore);
+
 		fprintf(f, "%d\n", forceRes);
+		fprintf(f, "%f\n", movementSpeed);
+		fprintf(f, "%d\n", JUMPTIME);
+		fprintf(f, "%f\n", JUMPSPEED);
+		fprintf(f, "%d\n", characterID);
+		fprintf(f, "%f\n", startSpeed);
+		fprintf(f, "%f\n", stageTime);
+		fprintf(f, "%f\n", dropVelocity);
 
 		fclose(f);
+		//***************************************
 
 	} else {
 		D.clear(BLACK);
