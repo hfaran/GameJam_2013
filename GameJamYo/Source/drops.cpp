@@ -8,11 +8,11 @@ void drop::initDrop( int pNum, bool type) {
 	type_ = type;
 
 	if(type_) {
-		frame.load("_Assets/HeartGame/gfx/bigdrop00.gfx");
+		frame.load("HeartGame/gfx/bigdrop00.gfx");
 		pixelX = 54;
 		pixelY = 66;
 	} else {
-		frame.load("_Assets/HeartGame/gfx/littledrop00.gfx");
+		frame.load("HeartGame/gfx/littledrop00.gfx");
 		pixelX = 30;
 		pixelY = 36;
 	}
@@ -59,11 +59,11 @@ void drop::initDrop( int pNum, bool type,  Flt _x, Flt _y) {
 	type_ = type;
 
 	if(type_) {
-		frame.load("_Assets/HeartGame/gfx/bigdrop00.gfx");
+		frame.load("HeartGame/gfx/bigdrop00.gfx");
 		pixelX = 54;
 		pixelY = 66;
 	} else {
-		frame.load("_Assets/HeartGame/gfx/littledrop00.gfx");
+		frame.load("HeartGame/gfx/littledrop00.gfx");
 		pixelX = 30;
 		pixelY = 36;
 	}

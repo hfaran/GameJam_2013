@@ -22,53 +22,53 @@ void NPC::initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage )
 	this->transitionFrameCounter=18;
 
 
-	this->frame[0].load("_Assets/HeartGame/gfx/beatA00.gfx");
-	this->frame[1].load("_Assets/HeartGame/gfx/beatA01.gfx");
-	this->frame[2].load("_Assets/HeartGame/gfx/beatA02.gfx");
-	this->frame[3].load("_Assets/HeartGame/gfx/beatB00.gfx");
-	this->frame[4].load("_Assets/HeartGame/gfx/beatB01.gfx");
-	this->frame[5].load("_Assets/HeartGame/gfx/beatB02.gfx");
-	this->frame[6].load("_Assets/HeartGame/gfx/beatC00.gfx");
-	this->frame[7].load("_Assets/HeartGame/gfx/beatC01.gfx");
-	this->frame[8].load("_Assets/HeartGame/gfx/beatC02.gfx");
-	this->frame[9].load("_Assets/HeartGame/gfx/beatD00.gfx");
-	this->frame[10].load("_Assets/HeartGame/gfx/beatD01.gfx");
-	this->frame[11].load("_Assets/HeartGame/gfx/beatD02.gfx");
-	this->frame[12].load("_Assets/HeartGame/gfx/beatE00.gfx");
-	this->frame[13].load("_Assets/HeartGame/gfx/beatE01.gfx");
-	this->frame[14].load("_Assets/HeartGame/gfx/beatE02.gfx");
-	this->frame[15].load("_Assets/HeartGame/gfx/beatF00.gfx");
-	this->frame[16].load("_Assets/HeartGame/gfx/beatF01.gfx");
-	this->frame[17].load("_Assets/HeartGame/gfx/beatF02.gfx");
+	this->frame[0].load("HeartGame/gfx/beatA00.gfx");
+	this->frame[1].load("HeartGame/gfx/beatA01.gfx");
+	this->frame[2].load("HeartGame/gfx/beatA02.gfx");
+	this->frame[3].load("HeartGame/gfx/beatB00.gfx");
+	this->frame[4].load("HeartGame/gfx/beatB01.gfx");
+	this->frame[5].load("HeartGame/gfx/beatB02.gfx");
+	this->frame[6].load("HeartGame/gfx/beatC00.gfx");
+	this->frame[7].load("HeartGame/gfx/beatC01.gfx");
+	this->frame[8].load("HeartGame/gfx/beatC02.gfx");
+	this->frame[9].load("HeartGame/gfx/beatD00.gfx");
+	this->frame[10].load("HeartGame/gfx/beatD01.gfx");
+	this->frame[11].load("HeartGame/gfx/beatD02.gfx");
+	this->frame[12].load("HeartGame/gfx/beatE00.gfx");
+	this->frame[13].load("HeartGame/gfx/beatE01.gfx");
+	this->frame[14].load("HeartGame/gfx/beatE02.gfx");
+	this->frame[15].load("HeartGame/gfx/beatF00.gfx");
+	this->frame[16].load("HeartGame/gfx/beatF01.gfx");
+	this->frame[17].load("HeartGame/gfx/beatF02.gfx");
 
-	this->frame[18].load("_Assets/HeartGame/gfx/beatAT00.gfx");
-	this->frame[19].load("_Assets/HeartGame/gfx/beatAT01.gfx");
-	this->frame[20].load("_Assets/HeartGame/gfx/beatAT02.gfx");
-	this->frame[21].load("_Assets/HeartGame/gfx/beatAT01.gfx");
-	this->frame[22].load("_Assets/HeartGame/gfx/beatBT00.gfx");
-	this->frame[23].load("_Assets/HeartGame/gfx/beatBT01.gfx");
-	this->frame[24].load("_Assets/HeartGame/gfx/beatBT02.gfx");
-	this->frame[25].load("_Assets/HeartGame/gfx/beatBT01.gfx");
-	this->frame[26].load("_Assets/HeartGame/gfx/beatCT00.gfx");
-	this->frame[27].load("_Assets/HeartGame/gfx/beatCT01.gfx");
-	this->frame[28].load("_Assets/HeartGame/gfx/beatCT02.gfx");
-	this->frame[29].load("_Assets/HeartGame/gfx/beatCT01.gfx");
-	this->frame[30].load("_Assets/HeartGame/gfx/beatDT00.gfx");
-	this->frame[31].load("_Assets/HeartGame/gfx/beatDT01.gfx");
-	this->frame[32].load("_Assets/HeartGame/gfx/beatDT02.gfx");
-	this->frame[33].load("_Assets/HeartGame/gfx/beatDT01.gfx");
-	this->frame[34].load("_Assets/HeartGame/gfx/beatET00.gfx");
-	this->frame[35].load("_Assets/HeartGame/gfx/beatET01.gfx");
-	this->frame[36].load("_Assets/HeartGame/gfx/beatET02.gfx");
-	this->frame[37].load("_Assets/HeartGame/gfx/beatET01.gfx");
-	this->frame[38].load("_Assets/HeartGame/gfx/beatFT00.gfx");
-	this->frame[39].load("_Assets/HeartGame/gfx/beatFT01.gfx");
-	this->frame[40].load("_Assets/HeartGame/gfx/beatFT02.gfx");
-	this->frame[41].load("_Assets/HeartGame/gfx/beatFT03.gfx");
-	this->frame[42].load("_Assets/HeartGame/gfx/beatFT04.gfx");
-	this->frame[43].load("_Assets/HeartGame/gfx/beatFT05.gfx");
-	this->frame[44].load("_Assets/HeartGame/gfx/beatFT06.gfx");
-	this->frame[45].load("_Assets/HeartGame/gfx/beatFT06.gfx");
+	this->frame[18].load("HeartGame/gfx/beatAT00.gfx");
+	this->frame[19].load("HeartGame/gfx/beatAT01.gfx");
+	this->frame[20].load("HeartGame/gfx/beatAT02.gfx");
+	this->frame[21].load("HeartGame/gfx/beatAT01.gfx");
+	this->frame[22].load("HeartGame/gfx/beatBT00.gfx");
+	this->frame[23].load("HeartGame/gfx/beatBT01.gfx");
+	this->frame[24].load("HeartGame/gfx/beatBT02.gfx");
+	this->frame[25].load("HeartGame/gfx/beatBT01.gfx");
+	this->frame[26].load("HeartGame/gfx/beatCT00.gfx");
+	this->frame[27].load("HeartGame/gfx/beatCT01.gfx");
+	this->frame[28].load("HeartGame/gfx/beatCT02.gfx");
+	this->frame[29].load("HeartGame/gfx/beatCT01.gfx");
+	this->frame[30].load("HeartGame/gfx/beatDT00.gfx");
+	this->frame[31].load("HeartGame/gfx/beatDT01.gfx");
+	this->frame[32].load("HeartGame/gfx/beatDT02.gfx");
+	this->frame[33].load("HeartGame/gfx/beatDT01.gfx");
+	this->frame[34].load("HeartGame/gfx/beatET00.gfx");
+	this->frame[35].load("HeartGame/gfx/beatET01.gfx");
+	this->frame[36].load("HeartGame/gfx/beatET02.gfx");
+	this->frame[37].load("HeartGame/gfx/beatET01.gfx");
+	this->frame[38].load("HeartGame/gfx/beatFT00.gfx");
+	this->frame[39].load("HeartGame/gfx/beatFT01.gfx");
+	this->frame[40].load("HeartGame/gfx/beatFT02.gfx");
+	this->frame[41].load("HeartGame/gfx/beatFT03.gfx");
+	this->frame[42].load("HeartGame/gfx/beatFT04.gfx");
+	this->frame[43].load("HeartGame/gfx/beatFT05.gfx");
+	this->frame[44].load("HeartGame/gfx/beatFT06.gfx");
+	this->frame[45].load("HeartGame/gfx/beatFT06.gfx");
 
 	
 }
@@ -108,7 +108,7 @@ void NPC::updateNPC( Pulse & pPulse, dropArray & dArray, int stage, bool & theEn
 		} else if(pPulse.waveys[pPulse.waveCount-3].xPos < RES_X/RES_Y){
 			nextFrame = 1;
 			beat.speed(pPulse.pSpeed*50.0f);
-			beat.play("_Assets/HeartGame/sound/Beat.ogg");
+			beat.play("HeartGame/sound/Beat.ogg");
 		}
 
 		frameCounter = nextFrame;

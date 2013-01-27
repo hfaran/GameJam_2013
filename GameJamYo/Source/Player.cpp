@@ -65,13 +65,14 @@ void Player::movePlayer( int moveType, Pulse & pPulse )
 
 	case 3:
 		//Rapid cycle (if unity animSpeed is rapid) to stop animation
-		if(this->frameCounter<(this->numFrames-1))
+		if(this->frameCounter<(this->numFrames-2))
 			this->frameCounter++;
 		break;
 
 	case 4:
 		// Set jumping and let handleJump take care of the rest
 		if(checkCollision(pPulse, collBox)) 
+			this->currentFrame = &this->frame[11];
 			this->jumping = true;
 		break;
 	}
@@ -99,13 +100,12 @@ void Player::handleJump(Pulse & pPulse)
 void Player::handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Pulse & pPulse )
 {
 	//Call movePlayer to handle movement based on given input
+	
 	if((Kb.b(jump) || Kb.b(KB_W) || Kb.b(KB_SPACE)) && this->jumpCount == 0) {
 		movePlayer(4, pPulse);
-	}
-	else if(Kb.b(left) || Kb.b(KB_A)) {
+	} else if(Kb.b(left) || Kb.b(KB_A)) {
 		movePlayer(1, pPulse);
-	}
-	else if(Kb.b(right) || Kb.b(KB_D)) {
+	} else if(Kb.b(right) || Kb.b(KB_D)) {
 		movePlayer(2, pPulse);
 	}
 	else {
@@ -130,7 +130,7 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right, Puls
 	//Update animation frame
 	this->currentFrame = &this->frame[(int) this->frameCounter];
 
-	if(this->x < (Flt) -RES_X/RES_Y - 0.15f)
+	if(this->y < (-1.0f))
 			gameOver = true;
 }
 
@@ -152,17 +152,18 @@ void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime,
 	this->animSpeed = animSpd;
 	this->gameOver = false;
 
-	this->frame[0].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	this->frame[1].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	this->frame[2].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	this->frame[3].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	this->frame[4].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	this->frame[5].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	this->frame[6].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	this->frame[7].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	this->frame[8].load("_Assets/HeartGame/gfx/mofo01.gfx");
-	this->frame[9].load("_Assets/HeartGame/gfx/mofo00.gfx");
-	this->frame[10].load("_Assets/HeartGame/gfx/mofo00.gfx");
+	this->frame[0].load("HeartGame/gfx/mofo01.gfx");
+	this->frame[1].load("HeartGame/gfx/mofo00.gfx");
+	this->frame[2].load("HeartGame/gfx/mofo01.gfx");
+	this->frame[3].load("HeartGame/gfx/mofo00.gfx");
+	this->frame[4].load("HeartGame/gfx/mofo01.gfx");
+	this->frame[5].load("HeartGame/gfx/mofo00.gfx");
+	this->frame[6].load("HeartGame/gfx/mofo01.gfx");
+	this->frame[7].load("HeartGame/gfx/mofo00.gfx");
+	this->frame[8].load("HeartGame/gfx/mofo01.gfx");
+	this->frame[9].load("HeartGame/gfx/mofo00.gfx");
+	this->frame[10].load("HeartGame/gfx/mofo00.gfx");
+	this->frame[11].load("HeartGame/gfx/mofo02.gfx");
 }
 
 
@@ -174,7 +175,7 @@ void Player::initBucket( int pX, int pY )
 	b_pixelX = pX;
 	b_pixelY = pY;
 
-	bucket.load("_Assets/HeartGame/gfx/bowl00.gfx");
+	bucket.load("HeartGame/gfx/bowl00.gfx");
 }
 
 void Player::updateBucket()

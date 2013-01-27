@@ -27,15 +27,15 @@ struct Pulse {
 
 	Flt pSpeed; //Speed of the pulse in -x direction
 	Wave waveys[20];
-	bool flatNext;
+	int flatNext;
 	int waveCount;
+	Image flatWave;
+	Image pulseWave;
 	
 	void updatePulse(dropArray & dArray, int stage);
 	void drawPulse();
 	void initPulse();
 	Flt calcAmp(int stage);
-
-	bool waveType;
 };
 
 

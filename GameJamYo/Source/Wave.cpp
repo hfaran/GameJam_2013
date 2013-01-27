@@ -6,7 +6,6 @@
 #include <cmath>
 
 #define Tt 0.5f
-#define PULSE_SPEED .005f
 
 void Wave::initWave( Flt xPosition, Flt period, Flt Amp )
 {
@@ -49,7 +48,7 @@ void Wave::updateWave()
 void Wave::drawWave( )
 {
 	for( int i=0; i<5; i++ ) {
-		this->beat[i].draw(RED, 0.015f);
+		//this->beat[i].draw(RED, 0.015f);
 		//this->beatCol[i].draw(GREEN);
 	}
 }
@@ -72,15 +71,11 @@ void Pulse::updatePulse(dropArray & dArray, int stage) {
 		for(int i=0;i<waveCount-1;i++){
 			waveys[i].copyWave(waveys[i+1]);
 		}
-		for(int i=0;i<waveCount;i++){
-			waveys[i].xPos -= pSpeed;
-		}
-		dArray.newDrop = true;
 		waveys[waveCount-1].initWave(-RES_X / RES_Y + Tt * (waveCount - 1), Tt, calcAmp(stage));
-	} else {
-		for(int i=0;i<waveCount;i++){
-			waveys[i].xPos -= pSpeed;
-		}
+		dArray.newDrop = true;
+	}
+	for(int i=0;i<waveCount;i++){
+		waveys[i].xPos -= pSpeed;
 	}
 	for(int i=0;i<waveCount;i++){
 		waveys[i].updateWave();
@@ -90,15 +85,23 @@ void Pulse::updatePulse(dropArray & dArray, int stage) {
 void Pulse::drawPulse() {
 	for(int i=0;i<waveCount;i++){
 		waveys[i].drawWave();
+		if(waveys[i].amplitude != 0.0f) {
+			Rect pulse(waveys[i].xPos-20/RES_Y,waveys[i].yPos-waveys[i].amplitude,waveys[i].xPos+Tt+20/RES_Y,waveys[i].yPos+waveys[i].amplitude);
+			pulseWave.draw(pulse);
+		} else {
+			Rect flat(waveys[i].xPos-20/RES_Y,waveys[i].yPos-10/RES_Y,waveys[i].xPos+Tt+20/RES_Y,waveys[i].yPos+10/RES_Y);
+			flatWave.draw(flat);
+		}
 		//D.text(waveys[i].xPos, 0.5f, S+i);
 	}
 }
 
 void Pulse::initPulse() {
-	flatNext = false;
+	flatNext = 0;
 	waveCount = RES_X / RES_Y * 2 / Tt + 3;
-	pSpeed = PULSE_SPEED;
-	waveType = false;
+
+	flatWave.load("HeartGame/gfx/wave00.gfx");
+	pulseWave.load("HeartGame/gfx/wave01.gfx");
 
 	for(int i=0;i<waveCount;i++){
 		waveys[i].initWave(-RES_X / RES_Y + Tt * i, Tt, 0.0f);
@@ -107,10 +110,13 @@ void Pulse::initPulse() {
 }
 
 Flt Pulse::calcAmp(int stage) {
-	waveType = !waveType;
-	if(waveType)
-		return 0.15f * sqrt((double) stage);
-	else
+	
+	if(flatNext == 2) {
+		flatNext = 0;
+		return 0.15f * sqrt((double) stage) * (rand() % 11 + 9) / 10.0f;
+	} else {
+		flatNext++;
 		return 0.0f;
+	}
 		
 }
