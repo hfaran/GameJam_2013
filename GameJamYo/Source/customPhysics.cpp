@@ -44,3 +44,24 @@ int checkCollisionEdge(Pulse &p, Rect collisionBox)
 	}
 	return -1;
 }
+
+int checkDropsCollision(dropArray & dArray, Rect bucketBox)
+{
+	bool coll = false;
+	
+		for(int j=0; j<dArray.arrayCount; j++)
+		{
+			coll = Cuts(bucketBox, dArray.dropArr[j].drawBox);
+			if(coll) {
+				for(int i=j; i<dArray.arrayCount; i++)
+				{
+					//dArray.dropArr[i]=dArray.dropArr[i+1];
+					dArray.dropArr[i].copyDrop(dArray.dropArr[i+1]);
+				}
+				dArray.arrayCount--;
+				return 1;
+			}
+		
+	}
+		return 0;
+}

@@ -16,7 +16,7 @@ Pulse pPulse;
 bool coll;
 int collEdge;
 int score=0;
-int stage=0;
+int stage=1;
 NPC heart;
 dropArray drops;
 Flt speed;
@@ -33,7 +33,7 @@ Bool Init()
 	bg.load("_Assets/HeartGame/gfx/background00.gfx"); // load bg
 
 	guy.initPlayer(53,106,0.7f,.0001,20,11,1.0/10.0);
-	heart.initNPC(1524,700,20,1.0/20.0, stage);
+	heart.initNPC(1524,700,42,0.1f, stage);
 	guy.initBucket(43,25);
 
 	diff = 0.1f;
@@ -53,11 +53,23 @@ Bool Update()
 {
 	if(Kb.bp(KB_ESC))return false;
 
+	if (stage != 5)
+	{
+		if( stage != 0)
+			stage=(int) score/10;
+		else
+			stage = (int) Time.frame()/300.0f;
+	}
+
 	collEdge = checkCollisionEdge(pPulse,guy.collBox);
+	score += checkDropsCollision(drops, guy.b_collBox);
 
 	guy.playerUpdate(KB_UP,KB_LEFT,KB_RIGHT, pPulse, collEdge);
 	pPulse.updatePulse(drops);
-	heart.updateNPC(pPulse, drops);
+	heart.updateNPC(pPulse, drops, stage);
+
+
+
 	guy.updateBucket();
 	drops.updateDropArray(500, stage);
 
@@ -66,7 +78,7 @@ Bool Update()
 
 void Draw()
 {
-	
+
 
 	D.clear(BLACK);
 	bg.draw(Rect((Flt) -RES_X/RES_Y, -1.0f, (Flt) RES_X/RES_Y, 1.0f));

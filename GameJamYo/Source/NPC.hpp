@@ -15,6 +15,7 @@ struct NPC {
 	Image *currentFrame;
 	int numFrames;
 	Flt frameCounter;
+	Flt transitionFrameCounter;
 	Image *frame;
 	Flt animSpeed;
 	Rect drawBox;
@@ -25,7 +26,7 @@ struct NPC {
 
 	void initNPC( int pX, int pY, int nFrames, Flt animSpd, int stage );
 
-	void updateNPC(Pulse & pPulse, dropArray & dArray);
+	void updateNPC(Pulse & pPulse, dropArray & dArray, int stage);
 	void drawNPC( );
 };
 
