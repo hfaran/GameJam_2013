@@ -31,6 +31,7 @@ struct Player {
 	void handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
 	void playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
 	void movePlayer( int moveType ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
+	void animatePlayer( Str type );
 	void handleJump(  );
 	void drawPlayer(  );
 };
