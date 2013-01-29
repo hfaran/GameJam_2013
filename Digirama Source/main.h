@@ -3,7 +3,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-extern float RES_Y;
-extern float RES_X;
+extern const float RES_Y;
+extern const float RES_X;
 
 #endif

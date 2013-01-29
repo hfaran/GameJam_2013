@@ -10,10 +10,10 @@
 #include <sstream>
 
 //Use this to enable or disable BGM
-#define BGM_ENABLED 0
+#define BGM_ENABLED 1
 //Initialize Resolution to something
-float RES_X = 1366.0f;
-float RES_Y = 768.0f;
+const float RES_X = 1366.0f;
+const float RES_Y = 768.0f;
 
 //Invisible Assets
 MusicTheme mtIdle;

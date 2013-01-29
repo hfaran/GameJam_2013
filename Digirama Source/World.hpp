@@ -14,6 +14,9 @@ struct World {
 	Player chip;
 	Rect ground, platform[3];
 
+	bool * isPlayerColliding;
+	bool isPlayerOnPlatform;
+
 	void InitWorld( int playerPX=93, int playerPY=134, int level=1 );
 	void UpdateWorld( );
 	void DrawWorld( );
