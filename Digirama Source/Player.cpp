@@ -51,12 +51,19 @@ void Player::handleJump( )
 	if(jumping && jumpCount < jumpTime) { 
 		y += (jumpTime - jumpCount) * (jumpTime - jumpCount) * jumpSpeed; 
 		jumpCount++;
-	} else if(!jumping && jumpCount > 0 && falling==true) {
+	/*} else if(!jumping && jumpCount > 0 && falling==true) {
 		y -= (jumpTime + 1 - jumpCount) * (jumpTime + 1 - jumpCount) * jumpSpeed; 
-		jumpCount--;
+		jumpCount--;*/
 	} else if(jumping && jumpCount >= jumpTime) {
 		jumping = false;
+		jumpCount = 0;
 	}
+}
+
+void Player::handleFall( )
+{
+	if( falling )
+		y -= jumpSpeed*200;
 }
 
 void Player::handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
@@ -90,6 +97,8 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 	handleInput( jump, left, right );
 	//Handle jumping if needed
 	handleJump( );
+	//
+	handleFall( );
 	//Update animation frame
 	currentFrame = &frame[(int) frameCounter];
 }
@@ -98,7 +107,7 @@ void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 void Player::initPlayer( int pX, int pY, float moveSpeed, Flt jSpeed, int jTime, int nFrames, Flt animSpd )
 {
 	x = -RES_X/RES_Y * 0.9f; //Start at the ~edge of the screen
-	y = -0.75f;		//Start on the top of the floor
+	y = -0.60f;		//Start on the top of the floor
 	jumping = false;
 	jumpCount = 0;
 	facingLeft = false;

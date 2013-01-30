@@ -35,6 +35,7 @@ struct Player {
 	void movePlayer( int moveType ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
 	void animatePlayer( Str type );
 	void handleJump(  );
+	void handleFall(  );
 	void drawPlayer(  );
 };
 

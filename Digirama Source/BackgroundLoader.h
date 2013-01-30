@@ -16,7 +16,7 @@ struct BackgroundLoader
    // members
    Thread thread;
    Image eLogo;
-   static const int loadTime=2000; //The time the esenthel logo (and other logos) show in ms
+   static const int loadTime=200; //The time the esenthel logo (and other logos) show in ms
 
    // methods
    void del() // delete background loader

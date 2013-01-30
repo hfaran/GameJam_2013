@@ -10,7 +10,7 @@
 #include <sstream>
 
 //Use this to enable or disable BGM
-#define BGM_ENABLED 1
+#define BGM_ENABLED 0
 //Initialize Resolution to something
 const float RES_X = 1366.0f;
 const float RES_Y = 768.0f;
