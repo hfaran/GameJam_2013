@@ -2,6 +2,12 @@
 #include "World.hpp"
 #include "customPhysics.h"
 
+//TODO
+//	-Add parabolic fall
+//	-Add detection for right/left edge collision of platform and subsequent restriction of right/left movement
+//	-Find a better way of movement restriction than replacing the key with KB_ESC
+
+
 void World::InitWorld( int playerPX, int playerPY, int level )
 {
 	//Initially false
