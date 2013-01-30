@@ -19,7 +19,7 @@ struct World {
 	bool * isPlayerOnPlatform;
 
 	void InitWorld( int playerPX=93, int playerPY=134, int level=1 );
-	void UpdateWorld( );
+	void UpdateWorld( int level=1 );
 	void DrawWorld( );
 
 };

@@ -51,9 +51,12 @@ void Player::handleJump( )
 	if(jumping && jumpCount < jumpTime) { 
 		y += (jumpTime - jumpCount) * (jumpTime - jumpCount) * jumpSpeed; 
 		jumpCount++;
-	/*} else if(!jumping && jumpCount > 0 && falling==true) {
+		
+		//Got rid of this code, replaced in handleFall
+		/*} else if(!jumping && jumpCount > 0 && falling==true) {
 		y -= (jumpTime + 1 - jumpCount) * (jumpTime + 1 - jumpCount) * jumpSpeed; 
 		jumpCount--;*/
+	
 	} else if(jumping && jumpCount >= jumpTime) {
 		jumping = false;
 		jumpCount = 0;
@@ -85,6 +88,8 @@ void Player::handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 
 void Player::playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right )
 {
+	collBox = Rect(x, y, 
+			x+2*pixelX/RES_Y, y+2*pixelY/RES_Y);
 	// If Player if facing left, flip him, otherwise, draw him normally
 	if(facingLeft) {
 		drawBox = Rect(x+2*pixelX/RES_Y, y,

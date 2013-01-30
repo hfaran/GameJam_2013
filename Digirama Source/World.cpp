@@ -27,71 +27,88 @@ void World::InitWorld( int playerPX, int playerPY, int level )
 	chip.initPlayer( playerPX, playerPY );
 }
 
-void World::UpdateWorld( )
+void World::UpdateWorld( int level )
 {
-	for(int i=0; i<3; i++)
-	{
-		isPlayerColliding[i] = Cuts(platform[i], chip.drawBox);
-		isPlayerOnPlatform[i] = onTop( platform[i], chip.drawBox);
-	}
-	isPlayerCollGround = (chip.drawBox.min.y <= ground.max.y);
+	//Update method for level 1
+	switch (level) {
+	case 1:
+		//Set bools that show whether Player is colliding with the ith platform or is on top of it
+		for(int i=0; i<3; i++)
+		{
+			isPlayerColliding[i] = Cuts(platform[i], chip.collBox);
+			isPlayerOnPlatform[i] = onTop( platform[i], chip.collBox);
+		}
+		//Check if Player is colliding with the ground
+		isPlayerCollGround = (chip.collBox.min.y <= ground.max.y);
 
-	if( isPlayerColliding[2] )
-	{
-		if( isPlayerOnPlatform[2] ) {
+		//Sequentially check collisions with each platform and handle cases
+		if( isPlayerColliding[2] )
+		{
+			// If player is colliding with, AND above platform 2, he should stop falling, reset his jump count
+			//	and be allowed to use all key inputs
+			if( isPlayerOnPlatform[2] ) {
+				chip.falling = false;
+				chip.jumpCount = 0;
+				chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
+			}
+			//Otherwise, we assume the player is colliding with some other part of the platform (not the top)
+			// so he should stop jumping and start falling; we disable the jump input here so he can't jump again
+			//	until he lands (KB_ESC is a hacky way of doing it, replace this)
+			else
+			{
+				chip.jumping = false;
+				chip.falling = true;
+				chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
+			}
+		}
+		//Do the same for this platform as for the last one
+		else if( isPlayerColliding[1] )
+		{
+			if( isPlayerOnPlatform[1] ) {
+				chip.falling = false;
+				chip.jumpCount = 0;
+				chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
+			}
+			else
+			{
+				chip.jumping = false;
+				chip.falling = true;
+				chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
+			}
+		}
+		//Do the same for this platform as for the last one
+		else if( isPlayerColliding[0] )
+		{
+			if( isPlayerOnPlatform[0] ) {
+				chip.falling = false;
+				chip.jumpCount = 0;
+				chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
+			}
+			else
+			{
+				chip.jumping = false;
+				chip.falling = true;
+				chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
+			}
+		}
+		// If player is on the ground, he should stop falling, have his jumpCount reset and be able to do whatever
+		else if( isPlayerCollGround ) {
 			chip.falling = false;
 			chip.jumpCount = 0;
 			chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
 		}
-		else
-		{
-			chip.jumping = false;
-			chip.falling = true;
+		// If he otherwise falling through midair (i.e., not touching anything AND not jumping), he should fall
+		//	 and not be allowed to jump in midair (currently done through replacing the KB_UP key, find a better method)
+		else {
+			if(!chip.jumping)
+				chip.falling = true;
 			chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
 		}
-	}
-	else if( isPlayerColliding[1] )
-	{
-		if( isPlayerOnPlatform[1] ) {
-			chip.falling = false;
-			chip.jumpCount = 0;
-			chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
-		}
-		else
-		{
-			chip.jumping = false;
-			chip.falling = true;
-			chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
-		}
-	}
-	else if( isPlayerColliding[0] )
-	{
-		if( isPlayerOnPlatform[0] ) {
-			chip.falling = false;
-			chip.jumpCount = 0;
-			chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
-		}
-		else
-		{
-			chip.jumping = false;
-			chip.falling = true;
-			chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
-		}
-	}
-	else if( isPlayerCollGround ) {
-		chip.falling = false;
-		chip.jumpCount = 0;
-		chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
-	}
-	else {
-		if(!chip.jumping)
-			chip.falling = true;
-		chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
 	}
 
 
 
-	//Update chip
+	//OLD COLLISION CODE ->
 	/*if( (isPlayerColliding[0] || isPlayerColliding[1] || isPlayerColliding[2] || isPlayerCollGround) && !isPlayerOnPlatform ) {
 	chip.jumping = false;
 	chip.falling = true;
@@ -118,7 +135,9 @@ void World::DrawWorld( )
 	// Draw the player
 	chip.drawPlayer( );
 
-	//Debug text
+
+
+	// ************* DEBUGGING STUFF ***************************** //
 	//D.text(0,0,S+"isPlayerCollidingRED: "+isPlayerColliding[0]);
 	//D.text(0,0.1f,S+"isPlayerCollidingBLUE: "+isPlayerColliding[1]);
 	//D.text(0,0.2f,S+"isPlayerCollidingGREEN: "+isPlayerColliding[2]);
