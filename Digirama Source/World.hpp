@@ -17,7 +17,6 @@ struct World {
 	bool * isPlayerColliding;
 	bool isPlayerCollGround;
 	bool * isPlayerOnPlatform;
-	bool isPlayerOnGround;
 
 	void InitWorld( int playerPX=93, int playerPY=134, int level=1 );
 	void UpdateWorld( );

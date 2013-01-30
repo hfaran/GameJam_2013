@@ -46,7 +46,7 @@ void World::UpdateWorld( )
 		else
 		{
 			chip.jumping = false;
-			//chip.falling = true;
+			chip.falling = true;
 			chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
 		}
 	}
@@ -93,18 +93,18 @@ void World::UpdateWorld( )
 
 	//Update chip
 	/*if( (isPlayerColliding[0] || isPlayerColliding[1] || isPlayerColliding[2] || isPlayerCollGround) && !isPlayerOnPlatform ) {
-		chip.jumping = false;
-		chip.falling = true;
-		chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
+	chip.jumping = false;
+	chip.falling = true;
+	chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
 	}
 	else if( (isPlayerColliding[0] || isPlayerColliding[1] || isPlayerColliding[2] || isPlayerCollGround) && isPlayerOnPlatform ) {
-		chip.falling = false;
-		chip.jumpCount = 0;
-		chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
+	chip.falling = false;
+	chip.jumpCount = 0;
+	chip.playerUpdate( KB_UP, KB_LEFT, KB_RIGHT );
 	}
 	else {
-		chip.falling = true;
-		chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
+	chip.falling = true;
+	chip.playerUpdate( KB_ESC, KB_LEFT, KB_RIGHT );
 	}*/
 
 }
@@ -129,10 +129,18 @@ void World::DrawWorld( )
 	//platform[0].draw(RED);
 	//platform[1].draw(BLUE);
 	//platform[2].draw(GREEN);
-	///*chip.drawBox.draw(RED);
-	//ground.draw(BLUE);*/
+	//chip.drawBox.draw(RED);
+	//ground.draw(BLUE);
 	//D.text(0,-0.4f,S+"jumping: "+chip.jumping);
 	//D.text(0,-0.3f,S+"falling: "+chip.falling);
 	//D.text(0,-0.2f,S+"jumpCount: "+chip.jumpCount);
 	//D.text(0,-0.1f,S+"jumpTime: "+chip.jumpTime);
+
+	Circle(0.01f, chip.drawBox.min).draw(RED  );
+	Circle(0.01f, chip.drawBox.max).draw(BLUE  );
+
+	for(int i=0;i<3;i++) {
+		Circle(0.01f, platform[i].max).draw(BLUE  );
+		Circle(0.01f, platform[i].min).draw(RED  );
+	}
 }

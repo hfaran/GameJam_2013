@@ -41,7 +41,7 @@ Bool Init()
 	}
 
 	//Initialize the world
-	world.InitWorld(93, 134, 1);
+	world.InitWorld(93/1.5, 134/1.5, 1);
 
 	//Play BGM
 	if(BGM_ENABLED)
