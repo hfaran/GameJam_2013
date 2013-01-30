@@ -34,10 +34,10 @@ void InitPre()
 Bool Init()
 {
 	{
-	//Load Esenthel Logo for startup
-	esenthelLogo.eLogo.load("_Assets/ChipGame/gfx/logo.gfx");
-	// Display the Esenthel logo
-	esenthelLogo.start(); 
+		//Load Esenthel Logo for startup
+		esenthelLogo.eLogo.load("_Assets/ChipGame/gfx/logo.gfx");
+		// Display the Esenthel logo
+		esenthelLogo.start(); 
 	}
 
 	//Initialize the world

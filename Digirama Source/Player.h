@@ -11,10 +11,10 @@ struct Player {
 
 	bool jumping; 
 	int jumpCount;
-	
+
 	int jumpTime;//Number of frames the jump lasts
 	Flt jumpSpeed;//The distance the jump moves during one frame 
-					//(not exactly, is used in math to have a parabolic jump)
+	//(not exactly, is used in math to have a parabolic jump)
 
 	bool falling;
 	int fallTime;
@@ -22,7 +22,7 @@ struct Player {
 
 	bool facingLeft; //Indicates whether to flip when drawing
 	Flt movementSpeed; //movement speed of the Player (default = 1.0f)
-	
+
 	Image *currentFrame; //pointer to current frame of animation
 	int numFrames;		//total # of animation frames
 	Flt frameCounter; //index of frame array for the current frame of animation
@@ -31,9 +31,9 @@ struct Player {
 
 	Rect drawBox;
 	Rect collBox;
-	
+
 	void initPlayer( int pX, int pY, float moveSpeed=1.0f, 
-					Flt jSpeed=0.0001f, int jTime=25, int nFrames=10, Flt animSpd=0.3333 );
+		Flt jSpeed=0.0001f, int jTime=25, int nFrames=10, Flt animSpd=0.3333 );
 	void handleInput( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
 	void playerUpdate( KB_BUTTON jump, KB_BUTTON left, KB_BUTTON right );
 	void movePlayer( int moveType ); //1 = move left, 2 = move right, 3 = stop, 4 = jump
