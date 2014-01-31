@@ -1,4 +1,4 @@
-**Fair warning: The code contained here (Heartflow/) was written over a ~38 hour period and utilizes lots of copy/paste, hard-coded constants and more.** [Here is my post-jam blog on the experience.](http://hfaran.com/wp/jamming-with-most-creative-people-in-vancouver/)
+**Fair warning: The code contained here (Heartflow) was written over a ~38 hour period and utilizes lots of copy/paste, hard-coded constants and more.** [Here is my post-jam blog on the experience.](http://hfaran.com/wp/jamming-with-most-creative-people-in-vancouver/)
 
 Heartflow
 =========
